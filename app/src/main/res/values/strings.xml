@@ -2,5 +2,8 @@
     <string name="app_name">Schedu</string>
     <string name="login_in">LOGIN</string>
     <string name="email_address">Email address</string>
+    <string name="purple_background_image">Purple Background Image</string>
+    <string name="schedu_logo">Schedu Logo</string>
+    <string name="chedu">chedu</string>
 
 </resources>
