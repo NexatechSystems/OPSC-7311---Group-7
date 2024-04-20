@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background_black"
+    tools:context=".CreateCategories">
+
+    <TextView
+        android:id="@+id/txtSelectCategory"
+        android:layout_width="155dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="56dp"
+        android:text="Select a category"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/CreateCategory"
+        android:layout_width="116dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="31dp"
+        android:background="@color/purple_500"
+        android:gravity="center"
+        android:text="Create Category"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.399"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewMan"
+        android:layout_width="42dp"
+        android:layout_height="119dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/person_standing"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewReturn"
+        android:layout_width="40dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/icon_return_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textCategory"
+        android:layout_width="106dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="8dp"
+        android:text="Category"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgAddProjectPhoto"
+        android:layout_width="34dp"
+        android:layout_height="29dp"
+        android:src="@drawable/icon_gallery"
+        tools:layout_editor_absoluteX="280dp"
+        tools:layout_editor_absoluteY="231dp" />
+
+    <ImageButton
+        android:id="@+id/imgAddCategoryPhoto"
+        android:layout_width="34dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="192dp"
+        android:layout_marginEnd="96dp"
+        android:src="@drawable/icon_gallery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="343dp"
+        android:layout_height="379dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="76dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textProjectName"
+                android:layout_width="101dp"
+                android:layout_height="16dp"
+                android:layout_gravity="left"
+                android:text="Project Name"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/txtProjectName"
+                android:layout_width="match_parent"
+                android:layout_height="59dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#d9d9d9"
+                android:hint="Project Name"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textCategoryName"
+                android:layout_width="101dp"
+                android:layout_height="16dp"
+                android:layout_gravity="left"
+                android:text="Category Name"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/txtCategoryName"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#d9d9d9"
+                android:hint="Category Name" />
+
+            <TextView
+                android:id="@+id/textStartDate"
+                android:layout_width="101dp"
+                android:layout_height="16dp"
+                android:layout_gravity="left"
+                android:text="Start Date"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/txtStartDate"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#d9d9d9"
+                android:drawableRight="@drawable/icon_calendar"
+                android:hint="Start Date" />
+
+            <TextView
+                android:id="@+id/textEndDate"
+                android:layout_width="101dp"
+                android:layout_height="16dp"
+                android:layout_gravity="left"
+                android:text="End Date"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/txtEndDate"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#d9d9d9"
+                android:drawableRight="@drawable/icon_calendar"
+                android:hint="End Date" />
+
+            <TextView
+                android:id="@+id/textHoursRequired"
+                android:layout_width="101dp"
+                android:layout_height="16dp"
+                android:layout_gravity="left"
+                android:text="@string/hours_required"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/txtHoursRequired"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_gravity="center_horizontal"
+                android:background="#d9d9d9"
+                android:drawableRight="@drawable/icon_clock"
+                android:hint="Start Time"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCreateCategory"
+        android:layout_width="114dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginBottom="4dp"
+        android:text="Create"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
