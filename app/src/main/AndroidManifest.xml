@@ -13,7 +13,19 @@
         android:theme="@style/Theme.Schedu"
         tools:targetApi="31">
         <activity
-            android:name=".CreateCategories"
+            android:name=".BaseActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".ViewCategoriesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateProjects"
             android:exported="false" />
         <activity
             android:name=".DisplayDetails"
@@ -35,7 +47,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

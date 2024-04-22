@@ -10,5 +10,13 @@
     <string name="start_date">Start Date</string>
     <string name="project_name">Project Name</string>
     <string name="category_name">Category Name</string>
+    <string name="add_category_photo">Add Category Photo</string>
+    <string name="create">Create</string>
+    <string name="start_time">Start Time</string>
+    <string name="category">Category</string>
+    <string name="create_category">Create Category</string>
+    <string name="work_tasks">Work Tasks</string>
+    <string name="personal_tasks">Personal Tasks</string>
+    <string name="studying">Studying</string>
 
 </resources>
