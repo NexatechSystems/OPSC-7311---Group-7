@@ -7,11 +7,12 @@ import android.os.Handler
 import android.widget.ProgressBar
 
 
-lateinit var progressBar : ProgressBar
-lateinit var handler: Handler
-class SplashScreenActivity : AppCompatActivity()
 
+class SplashScreenActivity : AppCompatActivity()
 {
+
+    lateinit var progressBar : ProgressBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
@@ -20,6 +21,7 @@ class SplashScreenActivity : AppCompatActivity()
         progressBar = findViewById(R.id.pbprogressBar)
 
         //Timer and untent
+        var handler = Handler()
         handler.postDelayed({
             val intent : Intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
