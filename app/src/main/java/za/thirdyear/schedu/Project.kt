@@ -11,12 +11,13 @@ class Project {
     private lateinit var endDate : Date
     private var hoursDuration : Double = 0.0
     private var hoursSpent : Double = 0.0
+    public lateinit var Project : Project
 
     constructor(ID : String, CategoryID : String, UserID : String ,
                 Name : String, StartDate : Date, EndDate : Date, HoursDuration : Double)
     {
         this.projectID = ID
-        //Use selectable categories
+        //Use selectable categories from list
         this.categoryID = CategoryID
         //Use Shared Preference from user details
         this.userID = UserID
@@ -28,7 +29,22 @@ class Project {
     }
 
 
-    //Insert Method to add Details to Firebase
+    /******Create new Project:******/
+
+
+
+    /******Retrieve Projects List:- List available as a public attribute******/
+
+
+
+    /******Edit Project:******/
+
+
+
+
+    /******Delete Category:******/
+
+
 
 
 }

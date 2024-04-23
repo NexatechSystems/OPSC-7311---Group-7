@@ -18,8 +18,45 @@ class User {
         this.userPassword = Password
     }
 
-    //Insert Method to add Details to Firebase
+    /******Create- Insert data to add Details to Firebase for Registration******/
+    public fun RegisterUser(NewUser : User) : Boolean
+    {
+        var registered : Boolean = false
+            //Enter newUser into Firebase
 
+        return registered
+    }
+
+
+    /******Retrieve username and password from database******/
+    public fun LoginUser (Username: String, Password : String) : Boolean
+    {
+        var loggedIn = false
+        //Search Firebase for username and password
+
+        return loggedIn
+    }
+
+
+    /******Update User Details:******/
+    public fun UpdateUserDetails (newData : String, Column : String) : Boolean
+    {
+        var updated = false
+
+        return updated
+    }
+
+
+
+
+
+    /******Delete User Details:******/
+    public fun DeleteUserDetails (newData : String, Column : String) : Boolean
+    {
+        var deleted = false
+
+        return deleted
+    }
 
 
 
