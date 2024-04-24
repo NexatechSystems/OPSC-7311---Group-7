@@ -25,17 +25,6 @@
             android:background="#222121">
 
             <!-- Text: Already have an account? Log In -->
-            <TextView
-                android:id="@+id/textAlreadyHaveAccount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="102dp"
-                android:layout_marginTop="586dp"
-                android:text="Already have an account? Log In"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <!-- OutlinedButton-1: Sign Up with Google -->
 
@@ -44,6 +33,19 @@
             <!-- Button: LOGIN IN -->
 
             <!-- Image: Logo -->
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRegisterRedirect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="544dp"
+                android:background="@color/app_background_black"
+                android:text="@string/don_t_have_an_account_register"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonSignUpGoogle"
@@ -75,19 +77,20 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:strokeColor="#07A2B7" />
 
+            <!-- Text: LOGIN -->
+
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnRegister"
+                android:id="@+id/btnLogin"
                 android:layout_width="242dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="56dp"
-                android:layout_marginTop="508dp"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="496dp"
                 android:background="#FFFF9B04"
                 android:text="@string/login_in"
                 android:textColor="#373737"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Text: LOGIN -->
             <ImageView
                 android:id="@+id/imageLogo"
                 android:layout_width="129dp"
@@ -105,7 +108,7 @@
             <!-- Divider-2 -->
 
             <EditText
-                android:id="@+id/txttEmailAddress"
+                android:id="@+id/txtEmailAddress"
                 android:layout_width="279dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="48dp"

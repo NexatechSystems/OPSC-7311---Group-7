@@ -18,5 +18,6 @@
     <string name="work_tasks">Work Tasks</string>
     <string name="personal_tasks">Personal Tasks</string>
     <string name="studying">Studying</string>
+    <string name="don_t_have_an_account_register">Don\'t have an account? Register.</string>
 
 </resources>

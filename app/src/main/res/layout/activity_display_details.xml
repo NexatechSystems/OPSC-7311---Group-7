@@ -5,7 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DisplayDetails"
+    tools:menu="@menu/scedu_menu"
+
     android:background="@color/app_background_black">
+
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <include layout="@layout/activity_base"/>
 
     <TextView

@@ -2,32 +2,30 @@ package layout
 
 import android.media.Image
 import android.os.Build
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import java.util.Date
-import java.time.LocalDate
-import java.util.Calendar
 
 
 class Category
 {
+    //Attributes
     private var categoryID : String = "CAT000000"
     private var userIU : String = "User000000"
     private var categoryName : String = "Default Category Name"
     @RequiresApi(Build.VERSION_CODES.O)
     private var categoryDateCreated : Date = Date()
-    private lateinit var categoryImage : Image
+    private lateinit var categoryImage : ImageView
 
-
-    public lateinit var Category : Category
 
     //Constructor for Class
     @RequiresApi(Build.VERSION_CODES.O)
-    constructor(categoryID: String, userIU: String, categoryName: String, categoryDateCreated : Date, Image : Image)
+    constructor(categoryID: String, userIU: String, categoryName: String, Image: ImageView)
     {
         this.categoryID = categoryID
         this.userIU = userIU
         this.categoryName = categoryName
-        this.categoryDateCreated = categoryDateCreated
+        this.categoryDateCreated = Date()
         this.categoryImage = Image
     }
 
@@ -41,8 +39,10 @@ class Category
 
 
     /******Companion Object for Static Methods******/
-    companion object StaticMethods{
-
+    companion object StaticMethods
+    {
+        //Static Attributes
+        public lateinit var Category : Category
 
         /******static Retrieve Categories List with UserID as parameter:- List available as a public attribute******/
         public lateinit var Categories : List<Category>
@@ -71,6 +71,13 @@ class Category
             var created : Boolean = false
 
             return created
+        }
+
+
+        /******Create Category Image******/
+        public fun CategoryImage (categoryName : String)
+        {
+
         }
 
 
