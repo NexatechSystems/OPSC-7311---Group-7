@@ -3,7 +3,10 @@ package layout
 import android.media.Image
 import android.os.Build
 import android.widget.ImageView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
+import za.thirdyear.schedu.CreateCategoryActivity
 import java.util.Date
 
 
@@ -41,12 +44,14 @@ class Category
     /******Companion Object for Static Methods******/
     companion object StaticMethods
     {
-        //Static Attributes
-        public lateinit var Category : Category
-
+        public lateinit var category : Category
+        private const val PICK_IMAGE_REQUEST = 1
+        private const val REQUEST_PERMISSION_CODE = 2
         /******static Retrieve Categories List with UserID as parameter:- List available as a public attribute******/
         public lateinit var Categories : List<Category>
 
+
+        /*****Get Category List with UserID as Parameter****/
         fun CategoryList(UserID : String) : List<Category>
         {
             //Add data to Categories : List<Category>
