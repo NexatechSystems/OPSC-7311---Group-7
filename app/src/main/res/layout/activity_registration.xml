@@ -64,6 +64,7 @@
         android:hint="Name"
         android:inputType="textPersonName"
         android:textColorHint="#07A2B7"
+        android:textColor="#07A2B7"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -78,6 +79,7 @@
         android:hint="Surname"
         android:inputType="textPersonName"
         android:textColorHint="#07A2B7"
+        android:textColor="#07A2B7"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -93,6 +95,7 @@
         android:hint="@string/email_address"
         android:inputType="textEmailAddress"
         android:textColorHint="#07A2B7"
+        android:textColor="#07A2B7"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -107,6 +110,7 @@
         android:hint="Username"
         android:inputType="textPersonName"
         android:textColorHint="#07A2B7"
+        android:textColor="#07A2B7"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -160,6 +164,8 @@
         android:drawableLeft="@drawable/password_lock"
         android:hint="Password"
         android:textColorHint="#07A2B7"
+        android:textColor="#07A2B7"
+        android:inputType="textPassword"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -168,8 +174,8 @@
         android:id="@+id/imagePersonSitting"
         android:layout_width="73dp"
         android:layout_height="67dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="40dp"
         android:src="@drawable/person_sitting_login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

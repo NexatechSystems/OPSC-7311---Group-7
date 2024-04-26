@@ -118,6 +118,7 @@
                 android:hint="@string/email_address"
                 android:inputType="textEmailAddress"
                 android:textColorHint="#07A2B7"
+                android:textColor="#07A2B7"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -170,6 +171,8 @@
                 android:drawableLeft="@drawable/password_lock"
                 android:hint="Password"
                 android:textColorHint="#07A2B7"
+                android:textColor="#07A2B7"
+                android:inputType="textPassword"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

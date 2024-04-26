@@ -13,6 +13,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.Toolbar
 import androidx.compose.ui.graphics.ImageBitmap
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.*
@@ -21,7 +23,9 @@ import layout.Category
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.ComposeView
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -39,6 +43,9 @@ class CreateCategoryActivity : AppCompatActivity() {
     private lateinit var btnCreateCategory : Button
     //Code for UserID Preference
     private lateinit var authenticator: FirebaseAuth
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navigationView: NavigationView
+    private lateinit var toolbar: Toolbar
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -46,8 +53,51 @@ class CreateCategoryActivity : AppCompatActivity() {
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_category)
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navigationView = findViewById(R.id.navigationView)
+        toolbar = findViewById(R.id.toolbar)
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_create_categories -> {
+                    val moveIntent = Intent(this, CreateCategoryActivity::class.java)
+                    startActivity(moveIntent)
+                    true
+                }
+                R.id.nav_view_categories -> {
+                    val moveIntent = Intent(this, ViewCategoriesActivity::class.java)
+                    startActivity(moveIntent)
+                    true
+                }
+                R.id.nav_display_details->{
+                    val moveIntent = Intent(this, DisplayDetails::class.java)
+                    startActivity(moveIntent)
+                    true
+                }
+                R.id.nav_logout->{
+                    val moveIntent = Intent(this, LoginActivity::class.java)
+                    startActivity(moveIntent)
+                    true
+                }
 
-        //Check if user is still signed in
+
+
+                else -> false
+            }
+        }
+
+
+
+
+//Check if user is still signed in
         authenticator = Firebase.auth
         val currentUser = FirebaseAuth.getInstance().currentUser
         if(currentUser == null) /**If User is signed out**/
