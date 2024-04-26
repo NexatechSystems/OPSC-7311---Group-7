@@ -29,12 +29,12 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_create_categories -> {
-                    val moveIntent = Intent(this, CreateCategoryActivity::class.java)
+                R.id.nav_logout->{
+                    val moveIntent = Intent(this, LoginActivity::class.java)
                     startActivity(moveIntent)
                     true
                 }
-                R.id.nav_view_categories -> {
+                R.id.nav_view_categories ->{
                     val moveIntent = Intent(this, ViewCategoriesActivity::class.java)
                     startActivity(moveIntent)
                     true
@@ -46,6 +46,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.nav_logout->{
                     val moveIntent = Intent(this, LoginActivity::class.java)
+                    startActivity(moveIntent)
+                    true
+                }
+                R.id.nav_create_categories->{
+                    val moveIntent = Intent(this, CreateCategoryActivity::class.java)
                     startActivity(moveIntent)
                     true
                 }
