@@ -50,6 +50,8 @@ class RegistrationActivity : AppCompatActivity() {
             val username = txtUserName.text.toString().trim()
             val emailAddress = txtEmailAddress.text.toString().trim()
             val password = txtPassword.text.toString().trim()
+            var newUser : User
+            var newUserID : String = "User$name$surname"
 
             // Check if any field is empty
             if (name.isEmpty() || surname.isEmpty() || username.isEmpty() || emailAddress.isEmpty() || password.isEmpty()) {
@@ -63,7 +65,10 @@ class RegistrationActivity : AppCompatActivity() {
                 // All fields are filled, proceed with registration
                 // Save the data (you can implement your saving logic here)
                 saveUserData(name, surname, username, emailAddress, password)
-// Retrieve saved user data from SharedPreferences
+                newUser = User(newUserID, name, surname, username, emailAddress, password)
+                newUser.RegisterUser(newUser)
+
+                // Retrieve saved user data from SharedPreferences
                 val savedEmail = sharedPreferences.getString("emailAddress", "")
                 val savedPassword = sharedPreferences.getString("password", "")
 
@@ -86,31 +91,31 @@ class RegistrationActivity : AppCompatActivity() {
         }
     }
 
-    /******Companion objects******/
-    companion object {
-        fun setContentView(
-            registrationActivity: RegistrationActivity,
-            activityRegistration: Any
-        ): RegistrationActivity {
-
-            private fun saveUserData(
-                name: String,
-                surname: String,
-                username: String,
-                emailAddress: String,
-                password: String
-            ) {
-                // Save user data to SharedPreferences
-                val editor = sharedPreferences.edit()
-                editor.putString("name", name)
-                editor.putString("surname", surname)
-                editor.putString("username", username)
-                editor.putString("emailAddress", emailAddress)
-                editor.putString("password", password)
-                editor.apply()
-            }
-        }
-
+    private fun saveUserData(
+        name: String,
+        surname: String,
+        username: String,
+        emailAddress: String,
+        password: String
+    ) {
+        // Save user data to SharedPreferences
+        val editor = sharedPreferences.edit()
+        editor.putString("name", name)
+        editor.putString("surname", surname)
+        editor.putString("username", username)
+        editor.putString("emailAddress", emailAddress)
+        editor.putString("password", password)
+        editor.apply()
     }
-
 }
+
+
+///******Companion objects******/
+//    companion object {
+//        private fun setContentView(
+//            registrationActivity: RegistrationActivity,
+//            activityRegistration: Any
+//        ): RegistrationActivity {
+//    }
+//
+//}

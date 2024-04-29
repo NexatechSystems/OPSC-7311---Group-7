@@ -22,5 +22,6 @@
     <string name="password">Password</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Closed</string>
+    <string name="ok_button_title">ok_button_title</string>
 
 </resources>

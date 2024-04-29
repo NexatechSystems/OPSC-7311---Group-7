@@ -17,7 +17,12 @@ class User {
 
 
     //Constructor
-    constructor(ID : String, Name : String, Surname : String, Email : String, Username : String, Password : String)
+    constructor(ID : String,
+                Name : String,
+                Surname : String,
+                Email : String,
+                Username : String,
+                Password : String)
     {
         this.userID = ID
         this.userName = Name
@@ -29,7 +34,7 @@ class User {
 
 
     /******Create- Insert data to add Details to Firebase for Registration******/
-    fun RegisterUser(NewUser: User): Boolean {
+    public fun RegisterUser(NewUser: User): Boolean {
         var registered: Boolean = false
 
         //Enter newUser into Firebase (as Dictionary)

@@ -17,7 +17,6 @@ class Category
     private var userIU : String = "User000000"
     private var categoryName : String = "Default Category Name"
     @RequiresApi(Build.VERSION_CODES.O)
-    private var categoryDateCreated : Date = Date()
     private lateinit var categoryImage : ImageView
 
 
@@ -28,9 +27,10 @@ class Category
         this.categoryID = categoryID
         this.userIU = userIU
         this.categoryName = categoryName
-        this.categoryDateCreated = Date()
         this.categoryImage = Image
     }
+
+
 
     /******Create new Category:******/
     public fun NewCategory (newCategory: Category) : Boolean
@@ -45,8 +45,6 @@ class Category
     companion object StaticMethods
     {
         public lateinit var category : Category
-        private const val PICK_IMAGE_REQUEST = 1
-        private const val REQUEST_PERMISSION_CODE = 2
         /******static Retrieve Categories List with UserID as parameter:- List available as a public attribute******/
         public lateinit var Categories : List<Category>
 
