@@ -14,11 +14,12 @@
         android:layout_width="122dp"
         android:layout_height="109dp"
         android:layout_marginStart="96dp"
+
         android:layout_marginTop="55dp"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/schedu_logo" />
-
 
 
     <TextView
@@ -26,7 +27,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="216dp"
+
         android:layout_marginTop="90dp"
+
         android:text="chedu"
         android:textColor="@color/white"
         android:textSize="35dp"
@@ -217,6 +220,7 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
@@ -245,6 +249,7 @@
             app:menu="@menu/scedu_menu" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

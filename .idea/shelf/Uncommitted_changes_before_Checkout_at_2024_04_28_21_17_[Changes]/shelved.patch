@@ -1,0 +1,157 @@
+Index: app/src/main/java/za/thirdyear/schedu/RegistrationActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package za.thirdyear.schedu\r\n\r\nimport android.content.Context\r\nimport android.content.Intent\r\nimport android.content.SharedPreferences\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.widget.Button\r\nimport android.widget.EditText\r\nimport android.widget.TextView\r\nimport android.widget.Toast\r\nimport com.google.firebase.FirebaseApp\r\nimport com.google.firebase.auth.FirebaseAuth\r\nimport com.google.firebase.database.FirebaseDatabase\r\n\r\n\r\n\r\nclass RegistrationActivity : AppCompatActivity() {\r\n\r\n    // Define view variables\r\n    private lateinit var txtTextName: EditText\r\n    private lateinit var txtSurname: EditText\r\n    private lateinit var txtUserName: EditText\r\n    private lateinit var txtEmailAddress: EditText\r\n    private lateinit var txtPassword: EditText\r\n    private lateinit var btnRegister: Button\r\n    private lateinit var sharedPreferences: SharedPreferences\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_registration)\r\n        FirebaseApp.initializeApp(this)\r\n\r\n        // Initialize SharedPreferences\r\n        sharedPreferences = getSharedPreferences(\"UserData\", Context.MODE_PRIVATE)\r\n\r\n        // Initialize views\r\n        txtTextName = findViewById(R.id.txtTextName)\r\n        txtSurname = findViewById(R.id.txtSurname)\r\n        txtUserName = findViewById(R.id.txtUserName)\r\n        txtEmailAddress = findViewById(R.id.txtEmailAddress)\r\n        txtPassword = findViewById(R.id.txtPassword)\r\n        btnRegister = findViewById(R.id.btnRegister)\r\n\r\n        btnRegister.setOnClickListener {\r\n            val name = txtTextName.text.toString().trim()\r\n            val surname = txtSurname.text.toString().trim()\r\n            val username = txtUserName.text.toString().trim()\r\n            val emailAddress = txtEmailAddress.text.toString().trim()\r\n            val password = txtPassword.text.toString().trim()\r\n\r\n            // Check if any field is empty\r\n            if (name.isEmpty() || surname.isEmpty() || username.isEmpty() || emailAddress.isEmpty() || password.isEmpty()) {\r\n                // Display error message\r\n                Toast.makeText(this@RegistrationActivity, \"Please fill in all fields\", Toast.LENGTH_SHORT).show()\r\n            } else {\r\n                // All fields are filled, proceed with registration\r\n                // Save the data (you can implement your saving logic here)\r\n                saveUserData(name, surname, username, emailAddress, password)\r\n// Retrieve saved user data from SharedPreferences\r\n                val savedEmail = sharedPreferences.getString(\"emailAddress\", \"\")\r\n                val savedPassword = sharedPreferences.getString(\"password\", \"\")\r\n\r\n               // Toast.makeText(\r\n                   // this@RegistrationActivity,\r\n                   // \"email: $savedEmail , password: $savedPassword\",\r\n                  //  Toast.LENGTH_SHORT\r\n               // ).show()\r\n                // Show success message\r\n                Toast.makeText(\r\n                    this@RegistrationActivity,\r\n                    \"Thank you, your registration has been successful\",\r\n                    Toast.LENGTH_SHORT\r\n                ).show()\r\n\r\n                // Navigate to login activity\r\n                val loginIntent = Intent(this@RegistrationActivity, LoginActivity::class.java)\r\n                startActivity(loginIntent)\r\n            }\r\n        }\r\n    }\r\n\r\n    private fun saveUserData(name: String, surname: String, username: String, emailAddress: String, password: String) {\r\n        // Save user data to SharedPreferences\r\n        val editor = sharedPreferences.edit()\r\n        editor.putString(\"name\", name)\r\n        editor.putString(\"surname\", surname)\r\n        editor.putString(\"username\", username)\r\n        editor.putString(\"emailAddress\", emailAddress)\r\n        editor.putString(\"password\", password)\r\n        editor.apply()\r\n    }\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/za/thirdyear/schedu/RegistrationActivity.kt b/app/src/main/java/za/thirdyear/schedu/RegistrationActivity.kt
+--- a/app/src/main/java/za/thirdyear/schedu/RegistrationActivity.kt	
++++ b/app/src/main/java/za/thirdyear/schedu/RegistrationActivity.kt	
+@@ -1,5 +1,6 @@
+ package za.thirdyear.schedu
+ 
++
+ import android.content.Context
+ import android.content.Intent
+ import android.content.SharedPreferences
+@@ -11,8 +12,6 @@
+ import android.widget.Toast
+ import com.google.firebase.FirebaseApp
+ import com.google.firebase.auth.FirebaseAuth
+-import com.google.firebase.database.FirebaseDatabase
+-
+ 
+ 
+ class RegistrationActivity : AppCompatActivity() {
+Index: app/src/main/java/za/thirdyear/schedu/User.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package za.thirdyear.schedu\r\n\r\nimport android.util.Log\r\nimport com.google.firebase.FirebaseApp\r\nimport com.google.firebase.auth.FirebaseAuth\r\nimport com.google.firebase.database.FirebaseDatabase\r\n\r\nclass User {\r\n    var userID : String\r\n    var userName : String\r\n    var userSurname : String\r\n    var userEmail : String\r\n    var userUserName : String\r\n    var userPassword : String\r\n    private lateinit var firebaseAuth: FirebaseAuth\r\n    private lateinit var firebaseDatabase: FirebaseDatabase\r\n\r\n\r\n    //Constructor\r\n    constructor(ID : String, Name : String, Surname : String, Email : String, Username : String, Password : String)\r\n    {\r\n        this.userID = ID\r\n        this.userName = Name\r\n        this.userSurname = Surname\r\n        this.userEmail = Email\r\n        this.userUserName = Username\r\n        this.userPassword = Password\r\n    }\r\n\r\n\r\n    /******Create- Insert data to add Details to Firebase for Registration******/\r\n    fun RegisterUser(NewUser: User): Boolean {\r\n        var registered: Boolean = false\r\n\r\n        //Enter newUser into Firebase (as Dictionary)\r\n        firebaseAuth.createUserWithEmailAndPassword(NewUser.userName, NewUser.userPassword)\r\n            .addOnCompleteListener { task ->\r\n                if (task.isSuccessful) {\r\n\r\n                    // User registered successfully\r\n                    val user = firebaseAuth.currentUser\r\n                    user?.let {\r\n                        // Get the user ID\r\n                        val userID = user.uid\r\n\r\n                        // Save additional user information to the Realtime Database\r\n                        val userReference = firebaseDatabase.reference.child(NewUser.userID)\r\n                        userReference.child(NewUser.userID).setValue(NewUser)\r\n                            .addOnSuccessListener { registered = true }\r\n                            .addOnFailureListener { registered = false } // User registration failed\r\n                    }\r\n                }\r\n\r\n                // User registration unsuccessful\r\n                else {\r\n\r\n                    registered = false\r\n                }\r\n            }\r\n\r\n        //Return true of registration is successful or false if registration failed\r\n        return registered\r\n    }\r\n\r\n    /******Update User Details:******/\r\n    public fun UpdateUserDetails (newData : String, Column : String) : Boolean\r\n    {\r\n        var updated = false\r\n\r\n        return updated\r\n    }\r\n\r\n    /******Delete User Details:******/\r\n    public fun DeleteUserDetails (newData : String, Column : String) : Boolean\r\n    {\r\n        var deleted = false\r\n\r\n        return deleted\r\n    }\r\n\r\n    companion object{\r\n        lateinit var firebaseAuth : FirebaseAuth //Declared Firebase Authorisation\r\n        /******Retrieve username and password from database******/\r\n        fun LoginUser(email : String, password : String) : Boolean\r\n        {\r\n            var login : Boolean = false\r\n            firebaseAuth.signInWithEmailAndPassword(email, password)\r\n                .addOnCompleteListener{ task ->\r\n                    if (task.isSuccessful)\r\n                    {\r\n                        //Successful Login\r\n                        login = true\r\n                    }\r\n\r\n                    else\r\n                    {\r\n                        //Unsuccessful Login\r\n                        login = false\r\n                    }\r\n                }\r\n            return login\r\n        }\r\n\r\n    }\r\n\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/za/thirdyear/schedu/User.kt b/app/src/main/java/za/thirdyear/schedu/User.kt
+--- a/app/src/main/java/za/thirdyear/schedu/User.kt	
++++ b/app/src/main/java/za/thirdyear/schedu/User.kt	
+@@ -3,7 +3,6 @@
+ import android.util.Log
+ import com.google.firebase.FirebaseApp
+ import com.google.firebase.auth.FirebaseAuth
+-import com.google.firebase.database.FirebaseDatabase
+ 
+ class User {
+     var userID : String
+@@ -13,7 +12,6 @@
+     var userUserName : String
+     var userPassword : String
+     private lateinit var firebaseAuth: FirebaseAuth
+-    private lateinit var firebaseDatabase: FirebaseDatabase
+ 
+ 
+     //Constructor
+@@ -29,38 +27,8 @@
+ 
+ 
+     /******Create- Insert data to add Details to Firebase for Registration******/
+-    fun RegisterUser(NewUser: User): Boolean {
+-        var registered: Boolean = false
+-
+-        //Enter newUser into Firebase (as Dictionary)
+-        firebaseAuth.createUserWithEmailAndPassword(NewUser.userName, NewUser.userPassword)
+-            .addOnCompleteListener { task ->
+-                if (task.isSuccessful) {
+-
+-                    // User registered successfully
+-                    val user = firebaseAuth.currentUser
+-                    user?.let {
+-                        // Get the user ID
+-                        val userID = user.uid
+-
+-                        // Save additional user information to the Realtime Database
+-                        val userReference = firebaseDatabase.reference.child(NewUser.userID)
+-                        userReference.child(NewUser.userID).setValue(NewUser)
+-                            .addOnSuccessListener { registered = true }
+-                            .addOnFailureListener { registered = false } // User registration failed
+-                    }
+-                }
+ 
+-                // User registration unsuccessful
+-                else {
+ 
+-                    registered = false
+-                }
+-            }
+-
+-        //Return true of registration is successful or false if registration failed
+-        return registered
+-    }
+ 
+     /******Update User Details:******/
+     public fun UpdateUserDetails (newData : String, Column : String) : Boolean
+@@ -81,25 +49,7 @@
+     companion object{
+         lateinit var firebaseAuth : FirebaseAuth //Declared Firebase Authorisation
+         /******Retrieve username and password from database******/
+-        fun LoginUser(email : String, password : String) : Boolean
+-        {
+-            var login : Boolean = false
+-            firebaseAuth.signInWithEmailAndPassword(email, password)
+-                .addOnCompleteListener{ task ->
+-                    if (task.isSuccessful)
+-                    {
+-                        //Successful Login
+-                        login = true
+-                    }
+ 
+-                    else
+-                    {
+-                        //Unsuccessful Login
+-                        login = false
+-                    }
+-                }
+-            return login
+-        }
+ 
+     }
+ 
+Index: app/src/main/res/layout/activity_registration.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".RegistrationActivity\"\r\n    android:background=\"@color/app_background_black\">\r\n\r\n\r\n        <!-- Box-2: Inner Background -->\r\n\r\n\r\n            <!-- Text: Already have an account? Log In -->\r\n\r\n    <!-- OutlinedButton-1: Sign Up with Google -->\r\n\r\n            <!-- OutlinedButton-2: Sign Up with Facebook -->\r\n\r\n            <!-- Button: LOGIN IN -->\r\n\r\n            <!-- Image: Logo -->\r\n\r\n    <TextView\r\n        android:id=\"@+id/btnRegisterRedirect\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"116dp\"\r\n        android:layout_marginTop=\"696dp\"\r\n        android:text=\"Already have an account? Log In\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"12sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <!-- Text: REGISTER -->\r\n\r\n    <!-- OutlinedTextField-1: Email address -->\r\n\r\n            <!-- Divider-1 -->\r\n\r\n            <!-- Divider-2 -->\r\n\r\n    <androidx.appcompat.widget.AppCompatButton\r\n        android:id=\"@+id/btnRegister\"\r\n        android:layout_width=\"242dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"88dp\"\r\n        android:layout_marginTop=\"624dp\"\r\n        android:background=\"#FFFF9B04\"\r\n        android:text=\"Register\"\r\n        android:textStyle=\"bold\"\r\n        android:textColor=\"#373737\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/txtTextName\"\r\n        android:layout_width=\"289dp\"\r\n        android:layout_height=\"53dp\"\r\n        android:layout_marginStart=\"56dp\"\r\n        android:layout_marginTop=\"216dp\"\r\n        android:height=\"52dp\"\r\n        android:hint=\"Name\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textColorHint=\"#07A2B7\"\r\n        android:textColor=\"#07A2B7\"\r\n        android:textSize=\"20sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/txtSurname\"\r\n        android:layout_width=\"293dp\"\r\n        android:layout_height=\"56dp\"\r\n        android:layout_marginStart=\"56dp\"\r\n        android:layout_marginTop=\"292dp\"\r\n        android:autofillHints=\"Email Address\"\r\n        android:hint=\"Surname\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textColorHint=\"#07A2B7\"\r\n        android:textColor=\"#07A2B7\"\r\n        android:textSize=\"20sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/txtEmailAddress\"\r\n        android:layout_width=\"292dp\"\r\n        android:layout_height=\"52dp\"\r\n        android:layout_marginStart=\"56dp\"\r\n        android:layout_marginTop=\"456dp\"\r\n        android:autofillHints=\"Email Address\"\r\n        android:drawableStart=\"@drawable/email_at_symbol\"\r\n        android:hint=\"@string/email_address\"\r\n        android:inputType=\"textEmailAddress\"\r\n        android:textColorHint=\"#07A2B7\"\r\n        android:textColor=\"#07A2B7\"\r\n        android:textSize=\"20sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/txtUserName\"\r\n        android:layout_width=\"290dp\"\r\n        android:layout_height=\"54dp\"\r\n        android:layout_marginStart=\"56dp\"\r\n        android:layout_marginTop=\"372dp\"\r\n        android:autofillHints=\"Email Address\"\r\n        android:hint=\"Username\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textColorHint=\"#07A2B7\"\r\n        android:textColor=\"#07A2B7\"\r\n        android:textSize=\"20sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <!-- OutlinedTextField-2: Password -->\r\n\r\n            <!-- Image: Person Sitting Image -->\r\n\r\n\r\n    <TextView\r\n        android:id=\"@+id/textLogin\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"148dp\"\r\n        android:layout_marginTop=\"72dp\"\r\n        android:text=\"REGISTER\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <View\r\n        android:id=\"@+id/divider2\"\r\n        android:layout_width=\"144dp\"\r\n        android:layout_height=\"1dp\"\r\n        android:layout_marginStart=\"172dp\"\r\n        android:layout_marginTop=\"124dp\"\r\n        android:background=\"#FFFFFF\"\r\n        android:rotation=\"179.52\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <View\r\n        android:id=\"@+id/divider1\"\r\n        android:layout_width=\"144dp\"\r\n        android:layout_height=\"1dp\"\r\n        android:layout_marginStart=\"172dp\"\r\n        android:layout_marginTop=\"76dp\"\r\n        android:background=\"#FFFFFF\"\r\n        android:rotation=\"179.52\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/txtPassword\"\r\n        android:layout_width=\"294dp\"\r\n        android:layout_height=\"48dp\"\r\n        android:layout_marginStart=\"56dp\"\r\n        android:layout_marginTop=\"536dp\"\r\n        android:height=\"52dp\"\r\n        android:drawableStart=\"@drawable/password_lock\"\r\n        android:hint=\"@string/password\"\r\n        android:textColorHint=\"#07A2B7\"\r\n        android:textColor=\"#07A2B7\"\r\n        android:inputType=\"textPassword\"\r\n        android:textSize=\"20sp\"\r\n        android:inputType=\"textVisiblePassword\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imagePersonSitting\"\r\n        android:layout_width=\"73dp\"\r\n        android:layout_height=\"67dp\"\r\n        android:layout_marginStart=\"52dp\"\r\n        android:layout_marginTop=\"40dp\"\r\n        android:src=\"@drawable/person_sitting_login\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageLogo\"\r\n        android:layout_width=\"66dp\"\r\n        android:layout_height=\"61dp\"\r\n        android:layout_marginStart=\"52dp\"\r\n        android:layout_marginTop=\"96dp\"\r\n        android:src=\"@drawable/schedu_logo\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_registration.xml b/app/src/main/res/layout/activity_registration.xml
+--- a/app/src/main/res/layout/activity_registration.xml	
++++ b/app/src/main/res/layout/activity_registration.xml	
+@@ -165,7 +165,6 @@
+         android:hint="@string/password"
+         android:textColorHint="#07A2B7"
+         android:textColor="#07A2B7"
+-        android:inputType="textPassword"
+         android:textSize="20sp"
+         android:inputType="textVisiblePassword"
+         app:layout_constraintStart_toStartOf="parent"
+Index: app/src/main/java/za/thirdyear/schedu/CreateProjectsActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package za.thirdyear.schedu\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport androidx.appcompat.app.ActionBarDrawerToggle\r\nimport androidx.appcompat.widget.Toolbar\r\nimport androidx.drawerlayout.widget.DrawerLayout\r\nimport com.google.android.material.navigation.NavigationView\r\n\r\nclass CreateProjects : AppCompatActivity() {\r\n    private lateinit var drawerLayout: DrawerLayout\r\n    private lateinit var navigationView: NavigationView\r\n    private lateinit var toolbar: Toolbar\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_create_projects)\r\n        drawerLayout = findViewById(R.id.drawer_layout)\r\n        navigationView = findViewById(R.id.navigationView)\r\n        toolbar = findViewById(R.id.toolbar)\r\n        val toggle = ActionBarDrawerToggle(\r\n            this,\r\n            drawerLayout,\r\n            toolbar,\r\n            R.string.navigation_drawer_open,\r\n            R.string.navigation_drawer_close\r\n        )\r\n        drawerLayout.addDrawerListener(toggle)\r\n        toggle.syncState()\r\n        navigationView.setNavigationItemSelectedListener { menuItem ->\r\n            when (menuItem.itemId) {\r\n                R.id.nav_logout->{\r\n                    val moveIntent = Intent(this, LoginActivity::class.java)\r\n                    startActivity(moveIntent)\r\n                    true\r\n                }\r\n                R.id.nav_view_categories ->{\r\n                    val moveIntent = Intent(this, ViewCategoriesActivity::class.java)\r\n                    startActivity(moveIntent)\r\n                    true\r\n                }\r\n                R.id.nav_display_details->{\r\n                    val moveIntent = Intent(this, DisplayDetails::class.java)\r\n                    startActivity(moveIntent)\r\n                    true\r\n                }\r\n                R.id.nav_logout->{\r\n                    val moveIntent = Intent(this, LoginActivity::class.java)\r\n                    startActivity(moveIntent)\r\n                    true\r\n                }\r\n                R.id.nav_create_categories->{\r\n                    val moveIntent = Intent(this, CreateCategoryActivity::class.java)\r\n                    startActivity(moveIntent)\r\n                    true\r\n                }\r\n\r\n\r\n\r\n                else -> false\r\n            }\r\n        }\r\n    }\r\n\r\n\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/za/thirdyear/schedu/CreateProjectsActivity.kt b/app/src/main/java/za/thirdyear/schedu/CreateProjectsActivity.kt
+--- a/app/src/main/java/za/thirdyear/schedu/CreateProjectsActivity.kt	
++++ b/app/src/main/java/za/thirdyear/schedu/CreateProjectsActivity.kt	
+@@ -29,11 +29,6 @@
+         toggle.syncState()
+         navigationView.setNavigationItemSelectedListener { menuItem ->
+             when (menuItem.itemId) {
+-                R.id.nav_logout->{
+-                    val moveIntent = Intent(this, LoginActivity::class.java)
+-                    startActivity(moveIntent)
+-                    true
+-                }
+                 R.id.nav_view_categories ->{
+                     val moveIntent = Intent(this, ViewCategoriesActivity::class.java)
+                     startActivity(moveIntent)

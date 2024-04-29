@@ -1,0 +1,32 @@
+Index: .idea/deploymentTargetDropDown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"deploymentTargetDropDown\">\r\n    <value>\r\n      <entry key=\"app\">\r\n        <State>\r\n          <runningDeviceTargetSelectedWithDropDown>\r\n            <Target>\r\n              <type value=\"RUNNING_DEVICE_TARGET\" />\r\n              <deviceKey>\r\n                <Key>\r\n                  <type value=\"SERIAL_NUMBER\" />\r\n                  <value value=\"localhost:5555\" />\r\n                </Key>\r\n              </deviceKey>\r\n            </Target>\r\n          </runningDeviceTargetSelectedWithDropDown>\r\n          <timeTargetWasSelectedWithDropDown value=\"2024-04-26T09:33:38.868437900Z\" />\r\n        </State>\r\n      </entry>\r\n    </value>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+--- a/.idea/deploymentTargetDropDown.xml	(revision 36673dbaa868616dceda591c7a9904af15c189ed)
++++ b/.idea/deploymentTargetDropDown.xml	(date 1714131618535)
+@@ -3,20 +3,7 @@
+   <component name="deploymentTargetDropDown">
+     <value>
+       <entry key="app">
+-        <State>
+-          <runningDeviceTargetSelectedWithDropDown>
+-            <Target>
+-              <type value="RUNNING_DEVICE_TARGET" />
+-              <deviceKey>
+-                <Key>
+-                  <type value="SERIAL_NUMBER" />
+-                  <value value="localhost:5555" />
+-                </Key>
+-              </deviceKey>
+-            </Target>
+-          </runningDeviceTargetSelectedWithDropDown>
+-          <timeTargetWasSelectedWithDropDown value="2024-04-26T09:33:38.868437900Z" />
+-        </State>
++        <State />
+       </entry>
+     </value>
+   </component>

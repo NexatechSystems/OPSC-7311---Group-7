@@ -53,26 +53,28 @@ class DisplayDetails : AppCompatActivity() {
         toggle.syncState()
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_home->{
-                    val moveIntent = Intent(this, MainActivity::class.java)
-                    startActivity(moveIntent)
-                    true
-                }
+
                 R.id.nav_view_categories ->{
+
                     val moveIntent = Intent(this, ViewCategoriesActivity::class.java)
                     startActivity(moveIntent)
                     true
                 }
+
                 R.id.nav_display_details->{
+
                     val moveIntent = Intent(this, DisplayDetails::class.java)
                     startActivity(moveIntent)
                     true
                 }
+
                 R.id.nav_logout->{
+
                     val moveIntent = Intent(this, LoginActivity::class.java)
                     startActivity(moveIntent)
                     true
                 }
+
 
 
 

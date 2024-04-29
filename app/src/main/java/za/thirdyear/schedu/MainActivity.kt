@@ -29,8 +29,10 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
+
                 R.id.nav_home->{
                     val moveIntent = Intent(this, MainActivity::class.java)
+
                     startActivity(moveIntent)
                     true
                 }
@@ -49,8 +51,10 @@ class MainActivity : AppCompatActivity() {
                     startActivity(moveIntent)
                     true
                 }
+
                 R.id.nav_create_project->{
                     val moveIntent = Intent(this, CreateProjects::class.java)
+
                     startActivity(moveIntent)
                     true
                 }
