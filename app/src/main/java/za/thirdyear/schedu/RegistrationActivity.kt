@@ -54,6 +54,11 @@ class RegistrationActivity : AppCompatActivity() {
                 val savedEmail = sharedPreferences.getString("emailAddress", "")
                 val savedPassword = sharedPreferences.getString("password", "")
 
+               // Toast.makeText(
+                   // this@RegistrationActivity,
+                   // "email: $savedEmail , password: $savedPassword",
+                  //  Toast.LENGTH_SHORT
+               // ).show()
                 // Show success message
                 Toast.makeText(
                     this@RegistrationActivity,
