@@ -1,0 +1,655 @@
+Index: app/src/main/res/layout/activity_create_category.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".CreateCategoryActivity\"\r\n    android:background=\"@color/app_background_black\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/txtSelectCategory\"\r\n        android:layout_width=\"160dp\"\r\n        android:layout_height=\"64dp\"\r\n        android:layout_marginStart=\"88dp\"\r\n        android:layout_marginTop=\"60dp\"\r\n        android:text=\"@string/create_category\"\r\n        android:textColor=\"@color/white\"\r\n        android:textSize=\"25sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <View\r\n        android:id=\"@+id/view2\"\r\n        android:layout_width=\"283dp\"\r\n        android:layout_height=\"55dp\"\r\n        android:layout_marginStart=\"64dp\"\r\n        android:layout_marginTop=\"132dp\"\r\n        android:background=\"#d9d9d9\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/CreateCategory\"\r\n        android:layout_width=\"116dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"31dp\"\r\n        android:layout_marginTop=\"140dp\"\r\n        android:layout_marginEnd=\"31dp\"\r\n        android:background=\"@color/purple_500\"\r\n        android:gravity=\"center\"\r\n        android:text=\"@string/create_category\"\r\n        android:textAlignment=\"center\"\r\n        android:textColor=\"@color/white\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.497\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageViewMan\"\r\n        android:layout_width=\"42dp\"\r\n        android:layout_height=\"119dp\"\r\n        android:layout_marginStart=\"48dp\"\r\n        android:layout_marginTop=\"40dp\"\r\n        android:src=\"@drawable/person_standing\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageViewReturn\"\r\n        android:layout_width=\"40dp\"\r\n        android:layout_height=\"29dp\"\r\n        android:layout_marginStart=\"12dp\"\r\n        android:layout_marginTop=\"8dp\"\r\n        android:src=\"@drawable/icon_return_arrow\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textProject\"\r\n        android:layout_width=\"106dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"152dp\"\r\n        android:layout_marginTop=\"8dp\"\r\n        android:text=\"@string/category\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"25sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textCategoryName\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_gravity=\"start\"\r\n        android:layout_marginStart=\"20dp\"\r\n        android:layout_marginTop=\"220dp\"\r\n        android:text=\"@string/category_name\"\r\n        android:textColor=\"@color/white\"\r\n        android:textSize=\"20sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <androidx.appcompat.widget.AppCompatButton\r\n        android:id=\"@+id/btnAddCategoryPhoto\"\r\n        android:layout_width=\"206dp\"\r\n        android:layout_height=\"64dp\"\r\n        android:layout_marginStart=\"88dp\"\r\n        android:layout_marginTop=\"344dp\"\r\n        android:drawableEnd=\"@drawable/icon_gallery\"\r\n        android:text=\"@string/add_category_photo\"\r\n        android:textAlignment=\"center\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/txtCategoryName\"\r\n        android:layout_width=\"363dp\"\r\n        android:layout_height=\"60dp\"\r\n        android:layout_gravity=\"center_horizontal\"\r\n        android:layout_marginStart=\"16dp\"\r\n        android:layout_marginTop=\"260dp\"\r\n        android:background=\"#d9d9d9\"\r\n        android:hint=\"@string/category_name\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <androidx.appcompat.widget.AppCompatButton\r\n        android:id=\"@+id/btnCreateCategory\"\r\n        android:layout_width=\"114dp\"\r\n        android:layout_height=\"57dp\"\r\n        android:layout_marginStart=\"280dp\"\r\n        android:layout_marginBottom=\"4dp\"\r\n        android:text=\"@string/create\"\r\n        android:textSize=\"16sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imgCategoryImage\"\r\n        android:layout_width=\"213dp\"\r\n        android:layout_height=\"163dp\"\r\n        android:layout_marginStart=\"96dp\"\r\n        android:layout_marginBottom=\"60dp\"\r\n        android:background=\"@color/white\"\r\n        android:contentDescription=\"Category Image\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:srcCompat=\"@drawable/icon_gallery\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_create_category.xml b/app/src/main/res/layout/activity_create_category.xml
+--- a/app/src/main/res/layout/activity_create_category.xml	
++++ b/app/src/main/res/layout/activity_create_category.xml	
+@@ -96,7 +96,7 @@
+         android:id="@+id/btnAddCategoryPhoto"
+         android:layout_width="206dp"
+         android:layout_height="64dp"
+-        android:layout_marginStart="88dp"
++        android:layout_marginStart="100dp"
+         android:layout_marginTop="344dp"
+         android:drawableEnd="@drawable/icon_gallery"
+         android:text="@string/add_category_photo"
+Index: app/src/main/java/za/thirdyear/schedu/CreateCategoryActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package za.thirdyear.schedu\r\n\r\nimport android.content.Intent\r\nimport android.graphics.Bitmap\r\nimport android.graphics.Canvas\r\nimport android.graphics.drawable.Drawable\r\nimport android.media.Image\r\nimport android.os.Build\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.os.Environment\r\nimport android.widget.Button\r\nimport android.widget.EditText\r\nimport android.widget.ImageView\r\nimport androidx.annotation.RequiresApi\r\nimport androidx.compose.ui.graphics.ImageBitmap\r\nimport com.google.firebase.auth.FirebaseAuth\r\nimport com.google.firebase.auth.ktx.*\r\nimport com.google.firebase.ktx.Firebase\r\nimport layout.Category\r\nimport androidx.compose.runtime.CompositionLocalProvider\r\nimport androidx.compose.runtime.remember\r\nimport androidx.compose.ui.platform.ComposeView\r\nimport androidx.lifecycle.lifecycleScope\r\nimport kotlinx.coroutines.Dispatchers\r\nimport kotlinx.coroutines.launch\r\nimport kotlinx.coroutines.withContext\r\nimport java.io.File\r\nimport java.io.FileOutputStream\r\nimport java.io.OutputStream\r\nimport java.net.Authenticator\r\nimport java.text.SimpleDateFormat\r\nimport java.util.Date\r\n\r\nclass CreateCategoryActivity : AppCompatActivity() {\r\n    private lateinit var btnAddCategoryPhoto : Button\r\n    private lateinit var imgCategoryPhoto : ImageView\r\n    private lateinit var txtCategoryName : EditText\r\n    private lateinit var btnCreateCategory : Button\r\n    //Code for UserID Preference\r\n    private lateinit var authenticator: FirebaseAuth\r\n\r\n\r\n    @RequiresApi(Build.VERSION_CODES.O)\r\n    override fun onCreate(savedInstanceState: Bundle?)\r\n    {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_create_category)\r\n\r\n        //Check if user is still signed in\r\n        authenticator = Firebase.auth\r\n        val currentUser = FirebaseAuth.getInstance().currentUser\r\n        if(currentUser == null) /**If User is signed out**/\r\n        {\r\n            //Redirect to Login Activity with intent\r\n            val intent : Intent = Intent(this, LoginActivity::class.java)\r\n        }\r\n\r\n\r\n        /******Hooks******/\r\n        btnAddCategoryPhoto = findViewById(R.id.btnAddCategoryPhoto)\r\n        txtCategoryName = findViewById(R.id.txtCategoryName)\r\n        imgCategoryPhoto = findViewById(R.id.imgCategoryImage)\r\n        btnCreateCategory = findViewById(R.id.btnCreateCategory)\r\n\r\n        /******Variables******/\r\n        val bitmap = Bitmap.createBitmap(imgCategoryPhoto.width,\r\n                                        imgCategoryPhoto.height,\r\n                                        Bitmap.Config.ARGB_8888)\r\n        val canvas = Canvas(bitmap)\r\n        imgCategoryPhoto.draw(canvas)\r\n\r\n\r\n        //Still need to convert ImageView to Image\r\n        lifecycleScope.launch {\r\n\r\n            try\r\n            {\r\n                var date = Date().time.toString()\r\n                var path: String =  applicationContext.filesDir.path\r\n                var fout: OutputStream\r\n\r\n                //Category name is the name of the category name associated with the image\r\n                var newFile: File = File(path,\"CategoryName\")\r\n                if (!newFile.exists()) {\r\n                    newFile.mkdirs();\r\n                }\r\n\r\n                var newFile2: File = File(newFile, \"$date.png\");\r\n                fout = FileOutputStream(newFile2);\r\n\r\n                //add your bitmap\r\n                bitmap.compress(Bitmap.CompressFormat.PNG, 100, fout)\r\n                fout.flush()\r\n                fout.close()\r\n\r\n            }\r\n            catch (e : Exception)\r\n            {\r\n                e.printStackTrace()\r\n            }\r\n\r\n        }\r\n\r\n        //var newCategoryImage : File = (Environment.getExternalStorageDirectory(),\r\n        //                                    \"/Android/data/\",\r\n        //                                    getApplicationContext().getPackageName(),\r\n        //                                    \"/Files\")\r\n\r\n        /******btnAddCategoryPhoto Event Handlers******/\r\n        //Move to activity to take photo and use shared preference to transfer photo to this activity\r\n\r\n\r\n        /******btnCreateCategory Event Handlers******/\r\n        //Use Category Class to put category in other class\r\n        btnCreateCategory.setOnClickListener()\r\n        {\r\n            Category.Category = Category(\"CAT000000\", \"User000000\", txtCategoryName.toString(), imgCategoryPhoto)\r\n            try\r\n                {\r\n                    var enterNewCategory : Boolean\r\n\r\n\r\n                }\r\n            catch (e : Exception)\r\n            {\r\n\r\n            }\r\n\r\n        }\r\n\r\n\r\n\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/za/thirdyear/schedu/CreateCategoryActivity.kt b/app/src/main/java/za/thirdyear/schedu/CreateCategoryActivity.kt
+--- a/app/src/main/java/za/thirdyear/schedu/CreateCategoryActivity.kt	
++++ b/app/src/main/java/za/thirdyear/schedu/CreateCategoryActivity.kt	
+@@ -1,18 +1,24 @@
+ package za.thirdyear.schedu
+ 
++import android.app.Activity
+ import android.content.Intent
++import android.content.pm.PackageManager
+ import android.graphics.Bitmap
+ import android.graphics.Canvas
+ import android.graphics.drawable.Drawable
+ import android.media.Image
++import android.nfc.Tag
+ import android.os.Build
+ import androidx.appcompat.app.AppCompatActivity
+ import android.os.Bundle
+ import android.os.Environment
++import android.provider.MediaStore
++import android.util.Log
+ import android.widget.Button
+ import android.widget.EditText
+ import android.widget.ImageView
+ import androidx.annotation.RequiresApi
++import androidx.appcompat.app.AlertDialog
+ import androidx.compose.ui.graphics.ImageBitmap
+ import com.google.firebase.auth.FirebaseAuth
+ import com.google.firebase.auth.ktx.*
+@@ -21,6 +27,8 @@
+ import androidx.compose.runtime.CompositionLocalProvider
+ import androidx.compose.runtime.remember
+ import androidx.compose.ui.platform.ComposeView
++import androidx.core.app.ActivityCompat
++import androidx.core.content.ContextCompat
+ import androidx.lifecycle.lifecycleScope
+ import kotlinx.coroutines.Dispatchers
+ import kotlinx.coroutines.launch
+@@ -33,104 +41,193 @@
+ import java.util.Date
+ 
+ class CreateCategoryActivity : AppCompatActivity() {
+-    private lateinit var btnAddCategoryPhoto : Button
+-    private lateinit var imgCategoryPhoto : ImageView
+-    private lateinit var txtCategoryName : EditText
+-    private lateinit var btnCreateCategory : Button
++    private lateinit var btnAddCategoryPhoto: Button
++    private lateinit var imgCategoryPhoto: ImageView
++    private lateinit var txtCategoryName: EditText
++    private lateinit var btnCreateCategory: Button
++
+     //Code for UserID Preference
+     private lateinit var authenticator: FirebaseAuth
+ 
+-
+     @RequiresApi(Build.VERSION_CODES.O)
+-    override fun onCreate(savedInstanceState: Bundle?)
+-    {
++    override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_create_category)
+ 
+         //Check if user is still signed in
+         authenticator = Firebase.auth
+         val currentUser = FirebaseAuth.getInstance().currentUser
+-        if(currentUser == null) /**If User is signed out**/
++        if (currentUser == null)
++        /**If User is signed out -- ChatGPT**/
+         {
+             //Redirect to Login Activity with intent
+-            val intent : Intent = Intent(this, LoginActivity::class.java)
++            val intent: Intent = Intent(this, LoginActivity::class.java)
+         }
+ 
+ 
++
+         /******Hooks******/
+         btnAddCategoryPhoto = findViewById(R.id.btnAddCategoryPhoto)
+         txtCategoryName = findViewById(R.id.txtCategoryName)
+         imgCategoryPhoto = findViewById(R.id.imgCategoryImage)
+         btnCreateCategory = findViewById(R.id.btnCreateCategory)
+ 
+-        /******Variables******/
+-        val bitmap = Bitmap.createBitmap(imgCategoryPhoto.width,
+-                                        imgCategoryPhoto.height,
+-                                        Bitmap.Config.ARGB_8888)
+-        val canvas = Canvas(bitmap)
+-        imgCategoryPhoto.draw(canvas)
++
++        /******btnAddCategoryPhoto Event Handlers******/
++        //Move to activity to take photo and use shared preference to transfer photo to this activity
++        btnAddCategoryPhoto.setOnClickListener()
++        {
++            /******Popup option asking if user wished to add image from gallery or take photo******/
++            val options = arrayOf<String>("Select image from gallery", "Take photo")
++            val popUp = AlertDialog.Builder(this)
++            popUp.setTitle("Select an option")
++            popUp.setItems(options)
++            { dialog, selection ->
++                // Respond to option selection
++                when (selection) {
++                    0 -> {
++                        //Boolean function to check if app can access Gallery
++                        val PICK_IMAGE_REQUEST = 1
++                        val REQUEST_PERMISSION_CODE = 2
++                        /******Check if user has permission to access Gallery- rename variables******/
++                        fun CheckPermissions() : Boolean
++                        {
++                            return ContextCompat.checkSelfPermission(
++                                this,
++                                Manifest.permission.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
++                            ) == PackageManager.PERMISSION_GRANTED
++                        }
++
++                        /******Request if user has permission to access Gallery- rename variables- Check this code later******/
++                        //fun requestPermission() {
++                        //    ActivityCompat.requestPermissions(
++                        //        this,
++                        //        arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
++                        //        REQUEST_PERMISSION_CODE
++                        //    )
++                        //}
++
++                        //Open Gallery
++                        @Override
++                        fun openGallery() {
++                            val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
++                            startActivityForResult(galleryIntent, PICK_IMAGE_REQUEST)
++                        }
++
++                        fun onRequestPermissionsResult(
++                            requestCode: Int,
++                            permissions: Array<String>,
++                            grantResults: IntArray
++                        ) {
++                            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
++                            if (requestCode == REQUEST_PERMISSION_CODE) {
++                                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
++                                    openGallery()
++                                } else {
++                                    // Permission denied, handle it
++                                }
++                            }
++                        }
++
++                        //Select Image from Gallery
++                        @Override
++                        fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
++                            super.onActivityResult(requestCode, resultCode, data)
++
++                            if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
++                                // Image is selected from the gallery, handle it
++                                val selectedImageUri = data.data
++                                // Now you can do whatever you want with the selected image URI
++                                // For example, you can display it in an ImageView or upload it to Firebase
++                            }
++                        }
++
++                    }
++
++                    1 -> {
++                        //Redirect to AddPhotoActivity
++                        val  addPhotoActivity : Intent = Intent(this, AddPhotoActivity::class.java)
++                        startActivity(addPhotoActivity)
++                    }
++                }
++            }
++            val imageDialog = popUp.create()
++            imageDialog.show()
++
++            /******Bit map Variables******/
++            val bitmap = Bitmap.createBitmap(
++                imgCategoryPhoto.width,
++                imgCategoryPhoto.height,
++                Bitmap.Config.ARGB_8888
++            )
++            val canvas = Canvas(bitmap)
++            imgCategoryPhoto.draw(canvas)
+ 
+ 
+-        //Still need to convert ImageView to Image
+-        lifecycleScope.launch {
++            //Still need to convert ImageView to Image
++            lifecycleScope.launch {
+ 
+-            try
+-            {
+-                var date = Date().time.toString()
+-                var path: String =  applicationContext.filesDir.path
+-                var fout: OutputStream
++                try {
++                    var date = Date().time.toString()
++                    var path: String = applicationContext.filesDir.path
++                    var fout: OutputStream
+ 
+-                //Category name is the name of the category name associated with the image
+-                var newFile: File = File(path,"CategoryName")
+-                if (!newFile.exists()) {
+-                    newFile.mkdirs();
+-                }
++                    //Category name is the name of the category name associated with the image
++                    var newFile: File = File(path, "CategoryName")
++                    if (!newFile.exists()) {
++                        newFile.mkdirs()
++                    }
+ 
+-                var newFile2: File = File(newFile, "$date.png");
+-                fout = FileOutputStream(newFile2);
++                    var newFile2: File = File(newFile, "CategoryName,$date.png")
++                    fout = FileOutputStream(newFile2)
+ 
+-                //add your bitmap
+-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, fout)
+-                fout.flush()
+-                fout.close()
++                    //Add bitmap
++                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, fout)
++                    fout.flush()
++                    fout.close()
+ 
+-            }
+-            catch (e : Exception)
+-            {
+-                e.printStackTrace()
+-            }
++
++                } catch (e: Exception) {
++                    //Logcat message- unable to use image
++                    e.printStackTrace()
++                    Log.d("btnAddCategoryPhoto", "Unable to convert ImageView to image")
++                }
+ 
++            }
+         }
+ 
+-        //var newCategoryImage : File = (Environment.getExternalStorageDirectory(),
+-        //                                    "/Android/data/",
+-        //                                    getApplicationContext().getPackageName(),
+-        //                                    "/Files")
+ 
+-        /******btnAddCategoryPhoto Event Handlers******/
+-        //Move to activity to take photo and use shared preference to transfer photo to this activity
+ 
+ 
+         /******btnCreateCategory Event Handlers******/
+         //Use Category Class to put category in other class
+         btnCreateCategory.setOnClickListener()
+         {
+-            Category.Category = Category("CAT000000", "User000000", txtCategoryName.toString(), imgCategoryPhoto)
+-            try
+-                {
+-                    var enterNewCategory : Boolean
++            Category("CAT000000", "User000000", txtCategoryName.toString(), imgCategoryPhoto)
++            try {
++                var enterNewCategory: Boolean
++                //Display Popup to ask if user wants to take a photo or use image from gallery
++
++            } catch (e: Exception) {
++                //Logcat message- unable to create category
++
++                //Popup message indicating that category was unable to be created
+ 
+ 
+-                }
+-            catch (e : Exception)
+-            {
++            }
+ 
+-            }
++        }
+ 
+-        }
++    }
++
++
++
++
++
++
++
+ 
+ 
+ 
+ 
+     }
+-}
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_create_projects.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/viewCreateProject\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"@color/app_background_black\"\r\n    tools:context=\".CreateProjects\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/txtSelectCategory\"\r\n        android:layout_width=\"160dp\"\r\n        android:layout_height=\"64dp\"\r\n        android:layout_marginStart=\"88dp\"\r\n        android:layout_marginTop=\"60dp\"\r\n        android:text=\"Create a Project\"\r\n        android:textColor=\"@color/white\"\r\n        android:textSize=\"25sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <View\r\n        android:id=\"@+id/view2\"\r\n        android:layout_width=\"283dp\"\r\n        android:layout_height=\"55dp\"\r\n        android:layout_marginStart=\"64dp\"\r\n        android:layout_marginTop=\"132dp\"\r\n        android:background=\"#d9d9d9\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/CreateCategory\"\r\n        android:layout_width=\"116dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"31dp\"\r\n        android:layout_marginTop=\"140dp\"\r\n        android:layout_marginEnd=\"31dp\"\r\n        android:background=\"@color/purple_500\"\r\n        android:gravity=\"center\"\r\n        android:text=\"Create Project\"\r\n        android:textAlignment=\"center\"\r\n        android:textColor=\"@color/white\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.497\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageViewMan\"\r\n        android:layout_width=\"42dp\"\r\n        android:layout_height=\"119dp\"\r\n        android:layout_marginStart=\"48dp\"\r\n        android:layout_marginTop=\"40dp\"\r\n        android:src=\"@drawable/person_standing\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageViewReturn\"\r\n        android:layout_width=\"40dp\"\r\n        android:layout_height=\"29dp\"\r\n        android:layout_marginStart=\"12dp\"\r\n        android:layout_marginTop=\"8dp\"\r\n        android:src=\"@drawable/icon_return_arrow\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <TextView\r\n        android:id=\"@+id/textProject\"\r\n        android:layout_width=\"106dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"152dp\"\r\n        android:layout_marginTop=\"8dp\"\r\n        android:text=\"Category\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"25sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ScrollView\r\n        android:layout_width=\"378dp\"\r\n        android:layout_height=\"323dp\"\r\n        android:layout_marginEnd=\"16dp\"\r\n        android:layout_marginBottom=\"112dp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\">\r\n\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\">\r\n\r\n            <TextView\r\n                android:id=\"@+id/textProjectName\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_gravity=\"start\"\r\n                android:layout_marginTop=\"10dp\"\r\n                android:text=\"@string/project_name\"\r\n                android:textColor=\"@color/white\"\r\n                android:textSize=\"24sp\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/txtProjectName\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"51dp\"\r\n                android:layout_gravity=\"center_horizontal\"\r\n                android:background=\"#d9d9d9\"\r\n                android:hint=\"@string/project_name\"\r\n                android:textSize=\"20sp\" />\r\n\r\n            <TextView\r\n                android:id=\"@+id/textCategoryName\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_gravity=\"start\"\r\n                android:layout_marginTop=\"10dp\"\r\n                android:text=\"@string/category_name\"\r\n                android:textColor=\"@color/white\"\r\n                android:textSize=\"20sp\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/txtCategoryName\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"56dp\"\r\n                android:layout_gravity=\"center_horizontal\"\r\n                android:background=\"#d9d9d9\"\r\n                android:hint=\"@string/category_name\" />\r\n\r\n            <TextView\r\n                android:id=\"@+id/textStartDate\"\r\n                android:layout_width=\"135dp\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_gravity=\"start\"\r\n                android:layout_marginTop=\"10dp\"\r\n                android:text=\"@string/start_date\"\r\n                android:textColor=\"@color/white\"\r\n                android:textSize=\"20sp\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/txtStartDate\"\r\n                android:layout_width=\"239dp\"\r\n                android:layout_height=\"55dp\"\r\n                android:layout_gravity=\"left\"\r\n                android:background=\"#d9d9d9\"\r\n                android:drawableEnd=\"@drawable/icon_calendar\"\r\n                android:hint=\"@string/start_date\"\r\n                android:inputType=\"date\"\r\n                />\r\n\r\n            <TextView\r\n                android:id=\"@+id/textEndDate\"\r\n                android:layout_width=\"110dp\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_gravity=\"start\"\r\n                android:layout_marginTop=\"10dp\"\r\n                android:text=\"@string/end_date\"\r\n                android:textColor=\"@color/white\"\r\n                android:textSize=\"20sp\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/txtEndDate\"\r\n                android:layout_width=\"245dp\"\r\n                android:layout_height=\"50dp\"\r\n                android:layout_gravity=\"left\"\r\n                android:background=\"#d9d9d9\"\r\n                android:drawableEnd=\"@drawable/icon_calendar\"\r\n                android:hint=\"@string/end_date\"\r\n                android:inputType=\"date\"\r\n                />\r\n\r\n            <TextView\r\n                android:id=\"@+id/textHoursRequired\"\r\n                android:layout_width=\"wrap_content\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:layout_gravity=\"start\"\r\n                android:layout_marginTop=\"10dp\"\r\n                android:text=\"@string/hours_required\"\r\n                android:textColor=\"@color/white\"\r\n                android:textSize=\"20sp\" />\r\n\r\n            <EditText\r\n                android:id=\"@+id/txtHoursRequired\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"58dp\"\r\n                android:layout_gravity=\"center_horizontal\"\r\n                android:background=\"#d9d9d9\"\r\n                android:drawableEnd=\"@drawable/icon_clock\"\r\n                android:hint=\"Start Time\"\r\n                android:textSize=\"20sp\" />\r\n\r\n            <View\r\n                android:id=\"@+id/view\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\" />\r\n\r\n        </LinearLayout>\r\n    </ScrollView>\r\n\r\n    <androidx.appcompat.widget.AppCompatButton\r\n        android:id=\"@+id/btnCreateCategory\"\r\n        android:layout_width=\"114dp\"\r\n        android:layout_height=\"57dp\"\r\n        android:layout_marginStart=\"280dp\"\r\n        android:layout_marginBottom=\"4dp\"\r\n        android:text=\"Create\"\r\n        android:textSize=\"16sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\" />\r\n\r\n    <androidx.appcompat.widget.AppCompatButton\r\n        android:id=\"@+id/btnAddProjectPhoto\"\r\n        android:layout_width=\"206dp\"\r\n        android:layout_height=\"64dp\"\r\n        android:layout_marginStart=\"100dp\"\r\n        android:layout_marginTop=\"208dp\"\r\n        android:drawableEnd=\"@drawable/icon_gallery\"\r\n        android:text=\"Add Project Photo\"\r\n        android:textAlignment=\"center\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_create_projects.xml b/app/src/main/res/layout/activity_create_projects.xml
+--- a/app/src/main/res/layout/activity_create_projects.xml	
++++ b/app/src/main/res/layout/activity_create_projects.xml	
+@@ -6,7 +6,7 @@
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:background="@color/app_background_black"
+-    tools:context=".CreateProjects">
++    tools:context=".CreateProjectsActivity">
+ 
+     <TextView
+         android:id="@+id/txtSelectCategory"
+Index: app/src/main/res/layout/activity_display_details.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".DisplayDetails\"\r\n    tools:menu=\"@menu/scedu_menu\"\r\n\r\n    android:background=\"@color/app_background_black\">\r\n\r\n    <com.google.android.material.navigation.NavigationView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\" />\r\n\r\n    <include layout=\"@layout/activity_base\"/>\r\n\r\n    <TextView\r\n        android:id=\"@+id/textViewCategory\"\r\n        android:layout_width=\"238dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"104dp\"\r\n        android:layout_marginTop=\"132dp\"\r\n        android:contentDescription=\"Information Button\"\r\n        android:gravity=\"center\"\r\n        android:text=\"IT\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"32sp\"\r\n        android:textStyle=\"bold\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageViewInfoIcon\"\r\n        android:layout_width=\"45dp\"\r\n        android:layout_height=\"40dp\"\r\n        android:layout_marginStart=\"40dp\"\r\n        android:layout_marginTop=\"184dp\"\r\n        android:contentDescription=\"View Information Button\"\r\n        android:src=\"@drawable/informationicon1\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <androidx.appcompat.widget.AppCompatButton\r\n        android:id=\"@+id/buttonFilter\"\r\n        android:layout_width=\"159dp\"\r\n        android:layout_height=\"57dp\"\r\n        android:layout_marginStart=\"28dp\"\r\n        android:background=\"#d9d9d9\"\r\n        android:text=\"Filter\"\r\n        android:textAllCaps=\"false\"\r\n        android:textColor=\"#000000\"\r\n        android:textSize=\"16sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintHeight_default=\"wrap\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.875\"\r\n        app:layout_constraintVertical_chainStyle=\"spread_inside\"\r\n        app:layout_constraintWidth_default=\"wrap\" />\r\n\r\n    <androidx.appcompat.widget.AppCompatButton\r\n        android:id=\"@+id/buttonCalculateHours\"\r\n        android:layout_width=\"159dp\"\r\n        android:layout_height=\"57dp\"\r\n        android:layout_marginEnd=\"24dp\"\r\n        android:background=\"#d9d9d9\"\r\n        android:text=\"Calculate Hours\"\r\n        android:textAllCaps=\"false\"\r\n        android:textColor=\"#000000\"\r\n        android:textSize=\"11sp\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHeight_default=\"wrap\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:layout_constraintVertical_bias=\"0.875\"\r\n        app:layout_constraintWidth_default=\"wrap\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_display_details.xml b/app/src/main/res/layout/activity_display_details.xml
+--- a/app/src/main/res/layout/activity_display_details.xml	
++++ b/app/src/main/res/layout/activity_display_details.xml	
+@@ -4,7 +4,7 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".DisplayDetails"
++    tools:context=".DisplayDetailsActivity"
+     tools:menu="@menu/scedu_menu"
+ 
+     android:background="@color/app_background_black">
+Index: app/src/main/java/za/thirdyear/schedu/AddPhotoActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/za/thirdyear/schedu/AddPhotoActivity.kt b/app/src/main/java/za/thirdyear/schedu/AddPhotoActivity.kt
+new file mode 100644
+--- /dev/null	
++++ b/app/src/main/java/za/thirdyear/schedu/AddPhotoActivity.kt	
+@@ -0,0 +1,14 @@
++package za.thirdyear.schedu
++
++import androidx.appcompat.app.AppCompatActivity
++import android.os.Bundle
++
++class AddPhotoActivity : AppCompatActivity() {
++    override fun onCreate(savedInstanceState: Bundle?) {
++        super.onCreate(savedInstanceState)
++        setContentView(R.layout.activity_add_photo)
++
++
++
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/za/thirdyear/schedu/Category.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package layout\r\n\r\nimport android.media.Image\r\nimport android.os.Build\r\nimport android.widget.ImageView\r\nimport androidx.annotation.RequiresApi\r\nimport java.util.Date\r\n\r\n\r\nclass Category\r\n{\r\n    //Attributes\r\n    private var categoryID : String = \"CAT000000\"\r\n    private var userIU : String = \"User000000\"\r\n    private var categoryName : String = \"Default Category Name\"\r\n    @RequiresApi(Build.VERSION_CODES.O)\r\n    private var categoryDateCreated : Date = Date()\r\n    private lateinit var categoryImage : ImageView\r\n\r\n\r\n    //Constructor for Class\r\n    @RequiresApi(Build.VERSION_CODES.O)\r\n    constructor(categoryID: String, userIU: String, categoryName: String, Image: ImageView)\r\n    {\r\n        this.categoryID = categoryID\r\n        this.userIU = userIU\r\n        this.categoryName = categoryName\r\n        this.categoryDateCreated = Date()\r\n        this.categoryImage = Image\r\n    }\r\n\r\n    /******Create new Category:******/\r\n    public fun NewCategory (newCategory: Category) : Boolean\r\n    {\r\n        var created : Boolean = false\r\n\r\n        return created\r\n    }\r\n\r\n\r\n    /******Companion Object for Static Methods******/\r\n    companion object StaticMethods\r\n    {\r\n        //Static Attributes\r\n        public lateinit var Category : Category\r\n\r\n        /******static Retrieve Categories List with UserID as parameter:- List available as a public attribute******/\r\n        public lateinit var Categories : List<Category>\r\n\r\n        fun CategoryList(UserID : String) : List<Category>\r\n        {\r\n            //Add data to Categories : List<Category>\r\n\r\n\r\n            return Categories\r\n        }\r\n\r\n\r\n        /******Edit Category:******/\r\n        fun UpdateCategory () : Boolean\r\n        {\r\n            var updated : Boolean = false\r\n\r\n            return updated\r\n        }\r\n\r\n\r\n        /******Delete Category:******/\r\n        public fun DeleteCategory (categoryID: String) : Boolean\r\n        {\r\n            var created : Boolean = false\r\n\r\n            return created\r\n        }\r\n\r\n\r\n        /******Create Category Image******/\r\n        public fun CategoryImage (categoryName : String)\r\n        {\r\n\r\n        }\r\n\r\n\r\n    }\r\n\r\n\r\n\r\n\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/za/thirdyear/schedu/Category.kt b/app/src/main/java/za/thirdyear/schedu/Category.kt
+--- a/app/src/main/java/za/thirdyear/schedu/Category.kt	
++++ b/app/src/main/java/za/thirdyear/schedu/Category.kt	
+@@ -3,7 +3,10 @@
+ import android.media.Image
+ import android.os.Build
+ import android.widget.ImageView
++import androidx.activity.result.contract.ActivityResultContracts
+ import androidx.annotation.RequiresApi
++import androidx.core.app.ActivityCompat
++import za.thirdyear.schedu.CreateCategoryActivity
+ import java.util.Date
+ 
+ 
+@@ -41,12 +44,14 @@
+     /******Companion Object for Static Methods******/
+     companion object StaticMethods
+     {
+-        //Static Attributes
+-        public lateinit var Category : Category
+-
++        public lateinit var category : Category
++        private const val PICK_IMAGE_REQUEST = 1
++        private const val REQUEST_PERMISSION_CODE = 2
+         /******static Retrieve Categories List with UserID as parameter:- List available as a public attribute******/
+         public lateinit var Categories : List<Category>
+ 
++
++        /*****Get Category List with UserID as Parameter****/
+         fun CategoryList(UserID : String) : List<Category>
+         {
+             //Add data to Categories : List<Category>
+Index: app/src/main/res/layout/activity_add_photo.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_add_photo.xml b/app/src/main/res/layout/activity_add_photo.xml
+new file mode 100644
+--- /dev/null	
++++ b/app/src/main/res/layout/activity_add_photo.xml	
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context=".AddPhotoActivity">
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_registration.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".RegistrationActivity\"\r\n    android:background=\"@color/app_background_black\">\r\n\r\n\r\n        <!-- Box-2: Inner Background -->\r\n\r\n\r\n            <!-- Text: Already have an account? Log In -->\r\n\r\n    <!-- OutlinedButton-1: Sign Up with Google -->\r\n\r\n            <!-- OutlinedButton-2: Sign Up with Facebook -->\r\n\r\n            <!-- Button: LOGIN IN -->\r\n\r\n            <!-- Image: Logo -->\r\n\r\n    <TextView\r\n        android:id=\"@+id/btnRegisterRedirect\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"116dp\"\r\n        android:layout_marginTop=\"696dp\"\r\n        android:text=\"Already have an account? Log In\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"12sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <!-- Text: REGISTER -->\r\n\r\n    <!-- OutlinedTextField-1: Email address -->\r\n\r\n            <!-- Divider-1 -->\r\n\r\n            <!-- Divider-2 -->\r\n\r\n    <androidx.appcompat.widget.AppCompatButton\r\n        android:id=\"@+id/btnRegister\"\r\n        android:layout_width=\"242dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"88dp\"\r\n        android:layout_marginTop=\"624dp\"\r\n        android:background=\"#FFFF9B04\"\r\n        android:text=\"Register\"\r\n        android:textStyle=\"bold\"\r\n        android:textColor=\"#373737\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/txtTextName\"\r\n        android:layout_width=\"289dp\"\r\n        android:layout_height=\"53dp\"\r\n        android:layout_marginStart=\"56dp\"\r\n        android:layout_marginTop=\"216dp\"\r\n        android:height=\"52dp\"\r\n        android:hint=\"Name\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textColorHint=\"#07A2B7\"\r\n        android:textSize=\"20sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/txtSurname\"\r\n        android:layout_width=\"293dp\"\r\n        android:layout_height=\"56dp\"\r\n        android:layout_marginStart=\"56dp\"\r\n        android:layout_marginTop=\"292dp\"\r\n        android:autofillHints=\"Email Address\"\r\n        android:hint=\"Surname\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textColorHint=\"#07A2B7\"\r\n        android:textSize=\"20sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/txtEmailAddress\"\r\n        android:layout_width=\"292dp\"\r\n        android:layout_height=\"52dp\"\r\n        android:layout_marginStart=\"56dp\"\r\n        android:layout_marginTop=\"456dp\"\r\n        android:autofillHints=\"Email Address\"\r\n        android:drawableStart=\"@drawable/email_at_symbol\"\r\n        android:hint=\"@string/email_address\"\r\n        android:inputType=\"textEmailAddress\"\r\n        android:textColorHint=\"#07A2B7\"\r\n        android:textSize=\"20sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/txtUserName\"\r\n        android:layout_width=\"290dp\"\r\n        android:layout_height=\"54dp\"\r\n        android:layout_marginStart=\"56dp\"\r\n        android:layout_marginTop=\"372dp\"\r\n        android:autofillHints=\"Email Address\"\r\n        android:hint=\"Username\"\r\n        android:inputType=\"textPersonName\"\r\n        android:textColorHint=\"#07A2B7\"\r\n        android:textSize=\"20sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <!-- OutlinedTextField-2: Password -->\r\n\r\n            <!-- Image: Person Sitting Image -->\r\n\r\n\r\n    <TextView\r\n        android:id=\"@+id/textLogin\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"148dp\"\r\n        android:layout_marginTop=\"72dp\"\r\n        android:text=\"REGISTER\"\r\n        android:textColor=\"#FFFFFF\"\r\n        android:textSize=\"40sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <View\r\n        android:id=\"@+id/divider2\"\r\n        android:layout_width=\"144dp\"\r\n        android:layout_height=\"1dp\"\r\n        android:layout_marginStart=\"172dp\"\r\n        android:layout_marginTop=\"124dp\"\r\n        android:background=\"#FFFFFF\"\r\n        android:rotation=\"179.52\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <View\r\n        android:id=\"@+id/divider1\"\r\n        android:layout_width=\"144dp\"\r\n        android:layout_height=\"1dp\"\r\n        android:layout_marginStart=\"172dp\"\r\n        android:layout_marginTop=\"76dp\"\r\n        android:background=\"#FFFFFF\"\r\n        android:rotation=\"179.52\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <EditText\r\n        android:id=\"@+id/txtPassword\"\r\n        android:layout_width=\"294dp\"\r\n        android:layout_height=\"48dp\"\r\n        android:layout_marginStart=\"56dp\"\r\n        android:layout_marginTop=\"536dp\"\r\n        android:height=\"52dp\"\r\n        android:drawableLeft=\"@drawable/password_lock\"\r\n        android:hint=\"Password\"\r\n        android:textColorHint=\"#07A2B7\"\r\n        android:textSize=\"20sp\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imagePersonSitting\"\r\n        android:layout_width=\"73dp\"\r\n        android:layout_height=\"67dp\"\r\n        android:layout_marginStart=\"48dp\"\r\n        android:layout_marginTop=\"32dp\"\r\n        android:src=\"@drawable/person_sitting_login\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageLogo\"\r\n        android:layout_width=\"66dp\"\r\n        android:layout_height=\"61dp\"\r\n        android:layout_marginStart=\"52dp\"\r\n        android:layout_marginTop=\"96dp\"\r\n        android:src=\"@drawable/schedu_logo\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_registration.xml b/app/src/main/res/layout/activity_registration.xml
+--- a/app/src/main/res/layout/activity_registration.xml	
++++ b/app/src/main/res/layout/activity_registration.xml	
+@@ -157,10 +157,11 @@
+         android:layout_marginStart="56dp"
+         android:layout_marginTop="536dp"
+         android:height="52dp"
+-        android:drawableLeft="@drawable/password_lock"
+-        android:hint="Password"
++        android:drawableStart="@drawable/password_lock"
++        android:hint="@string/password"
+         android:textColorHint="#07A2B7"
+         android:textSize="20sp"
++        android:inputType="textVisiblePassword"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
+ 
+Index: app/src/main/java/za/thirdyear/schedu/User.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package za.thirdyear.schedu\r\n\r\nclass User {\r\n    private var userID : String = \"User000000\"\r\n    private var userName : String = \"User Default Name\"\r\n    private var userSurname : String = \"User Default Surname\"\r\n    private var userEmail : String = \"User Default Email\"\r\n    private var userUserName : String = \"User Default Username\"\r\n    private var userPassword : String = \"User Default Password\"\r\n\r\n    constructor(ID : String, Name : String, Surname : String, Email : String, Username : String, Password : String)\r\n    {\r\n        this.userID = ID\r\n        this.userName = Name\r\n        this.userSurname = Surname\r\n        this.userEmail = Email\r\n        this.userUserName = Username\r\n        this.userPassword = Password\r\n    }\r\n\r\n    /******Create- Insert data to add Details to Firebase for Registration******/\r\n    public fun RegisterUser(NewUser : User) : Boolean\r\n    {\r\n        var registered : Boolean = false\r\n            //Enter newUser into Firebase\r\n\r\n        return registered\r\n    }\r\n\r\n\r\n    /******Retrieve username and password from database******/\r\n    public fun LoginUser (Username: String, Password : String) : Boolean\r\n    {\r\n        var loggedIn = false\r\n        //Search Firebase for username and password\r\n\r\n        return loggedIn\r\n    }\r\n\r\n\r\n    /******Update User Details:******/\r\n    public fun UpdateUserDetails (newData : String, Column : String) : Boolean\r\n    {\r\n        var updated = false\r\n\r\n        return updated\r\n    }\r\n\r\n\r\n\r\n\r\n\r\n    /******Delete User Details:******/\r\n    public fun DeleteUserDetails (newData : String, Column : String) : Boolean\r\n    {\r\n        var deleted = false\r\n\r\n        return deleted\r\n    }\r\n\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/za/thirdyear/schedu/User.kt b/app/src/main/java/za/thirdyear/schedu/User.kt
+--- a/app/src/main/java/za/thirdyear/schedu/User.kt	
++++ b/app/src/main/java/za/thirdyear/schedu/User.kt	
+@@ -1,13 +1,22 @@
+ package za.thirdyear.schedu
+ 
++import android.util.Log
++import com.google.firebase.FirebaseApp
++import com.google.firebase.auth.FirebaseAuth
++import com.google.firebase.database.FirebaseDatabase
++
+ class User {
+-    private var userID : String = "User000000"
+-    private var userName : String = "User Default Name"
+-    private var userSurname : String = "User Default Surname"
+-    private var userEmail : String = "User Default Email"
+-    private var userUserName : String = "User Default Username"
+-    private var userPassword : String = "User Default Password"
++    var userID : String
++    var userName : String
++    var userSurname : String
++    var userEmail : String
++    var userUserName : String
++    var userPassword : String
++    private lateinit var firebaseAuth: FirebaseAuth
++    private lateinit var firebaseDatabase: FirebaseDatabase
+ 
++
++    //Constructor
+     constructor(ID : String, Name : String, Surname : String, Email : String, Username : String, Password : String)
+     {
+         this.userID = ID
+@@ -18,26 +27,41 @@
+         this.userPassword = Password
+     }
+ 
++
+     /******Create- Insert data to add Details to Firebase for Registration******/
+-    public fun RegisterUser(NewUser : User) : Boolean
+-    {
+-        var registered : Boolean = false
+-            //Enter newUser into Firebase
++    fun RegisterUser(NewUser: User): Boolean {
++        var registered: Boolean = false
++
++        //Enter newUser into Firebase (as Dictionary)
++        firebaseAuth.createUserWithEmailAndPassword(NewUser.userName, NewUser.userPassword)
++            .addOnCompleteListener { task ->
++                if (task.isSuccessful) {
+ 
++                    // User registered successfully
++                    val user = firebaseAuth.currentUser
++                    user?.let {
++                        // Get the user ID
++                        val userID = user.uid
++
++                        // Save additional user information to the Realtime Database
++                        val userReference = firebaseDatabase.reference.child(NewUser.userID)
++                        userReference.child(NewUser.userID).setValue(NewUser)
++                            .addOnSuccessListener { registered = true }
++                            .addOnFailureListener { registered = false } // User registration failed
++                    }
++                }
++
++                // User registration unsuccessful
++                else {
++
++                    registered = false
++                }
++            }
++
++        //Return true of registration is successful or false if registration failed
+         return registered
+     }
+ 
+-
+-    /******Retrieve username and password from database******/
+-    public fun LoginUser (Username: String, Password : String) : Boolean
+-    {
+-        var loggedIn = false
+-        //Search Firebase for username and password
+-
+-        return loggedIn
+-    }
+-
+-
+     /******Update User Details:******/
+     public fun UpdateUserDetails (newData : String, Column : String) : Boolean
+     {
+@@ -46,10 +70,6 @@
+         return updated
+     }
+ 
+-
+-
+-
+-
+     /******Delete User Details:******/
+     public fun DeleteUserDetails (newData : String, Column : String) : Boolean
+     {
+@@ -58,6 +78,31 @@
+         return deleted
+     }
+ 
++    companion object{
++        lateinit var firebaseAuth : FirebaseAuth //Declared Firebase Authorisation
++        /******Retrieve username and password from database******/
++        fun LoginUser(email : String, password : String) : Boolean
++        {
++            var login : Boolean = false
++            firebaseAuth.signInWithEmailAndPassword(email, password)
++                .addOnCompleteListener{ task ->
++                    if (task.isSuccessful)
++                    {
++                        //Successful Login
++                        login = true
++                    }
++
++                    else
++                    {
++                        //Unsuccessful Login
++                        login = false
++                    }
++                }
++            return login
++        }
++
++    }
++
+ 
+ 
+ }
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\">\r\n\r\n    <uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"\r\n        android:maxSdkVersion=\"32\" />\r\n    <uses-feature android:name=\"android.hardware.camera\" android:required=\"true\"/>\r\n    <uses-permission android:name=\"android.permission.CAMERA\"/>\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:dataExtractionRules=\"@xml/data_extraction_rules\"\r\n        android:fullBackupContent=\"@xml/backup_rules\"\r\n        android:icon=\"@mipmap/schedu_logo\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/schedu_logo\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.Schedu\"\r\n\r\n        tools:targetApi=\"31\">\r\n        <activity\r\n            android:name=\".BaseActivity2\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".ViewCategoriesActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".CreateCategoryActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".RegistrationActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".CreateProjects\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".DisplayDetails\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".BaseActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".SplashScreenActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n        <activity\r\n            android:name=\".LoginActivity\"\r\n            android:exported=\"false\" />\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\" />\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	
++++ b/app/src/main/AndroidManifest.xml	
+@@ -2,10 +2,17 @@
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools">
+ 
+-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
++    <uses-permission
++        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
++        android:maxSdkVersion="32" />
++    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+         android:maxSdkVersion="32" />
+-    <uses-feature android:name="android.hardware.camera" android:required="true"/>
+-    <uses-permission android:name="android.permission.CAMERA"/>
++    <uses-feature
++        android:name="android.hardware.camera"
++        android:required="true" />
++    <uses-permission android:name="android.permission.CAMERA" />
++    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
++
+ 
+     <application
+         android:allowBackup="true"
+@@ -16,9 +23,11 @@
+         android:roundIcon="@mipmap/schedu_logo"
+         android:supportsRtl="true"
+         android:theme="@style/Theme.Schedu"
+-
+         tools:targetApi="31">
+         <activity
++            android:name=".AddPhotoActivity"
++            android:exported="false" />
++        <activity
+             android:name=".BaseActivity2"
+             android:exported="false" />
+         <activity
+@@ -31,10 +40,10 @@
+             android:name=".RegistrationActivity"
+             android:exported="false" />
+         <activity
+-            android:name=".CreateProjects"
++            android:name=".CreateProjectsActivity"
+             android:exported="false" />
+         <activity
+-            android:name=".DisplayDetails"
++            android:name=".DisplayDetailsActivity"
+             android:exported="false" />
+         <activity
+             android:name=".BaseActivity"

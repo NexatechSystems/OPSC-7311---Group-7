@@ -35,6 +35,8 @@ import java.io.OutputStream
 import java.net.Authenticator
 import java.text.SimpleDateFormat
 import java.util.Date
+import android.Manifest
+import android.content.pm.PackageManager
 
 class CreateCategoryActivity : AppCompatActivity() {
     private lateinit var btnAddCategoryPhoto : Button
@@ -87,17 +89,11 @@ class CreateCategoryActivity : AppCompatActivity() {
                     startActivity(moveIntent)
                     true
                 }
-
-
-
                 else -> false
             }
         }
 
-
-
-
-//Check if user is still signed in
+        //Check if user is still signed in
         authenticator = Firebase.auth
         val currentUser = FirebaseAuth.getInstance().currentUser
         if(currentUser == null) /**If User is signed out**/
@@ -113,6 +109,7 @@ class CreateCategoryActivity : AppCompatActivity() {
         imgCategoryPhoto = findViewById(R.id.imgCategoryImage)
         btnCreateCategory = findViewById(R.id.btnCreateCategory)
 
+
         /******Variables******/
         val bitmap = Bitmap.createBitmap(imgCategoryPhoto.width,
                                         imgCategoryPhoto.height,
@@ -121,28 +118,15 @@ class CreateCategoryActivity : AppCompatActivity() {
         imgCategoryPhoto.draw(canvas)
 
 
+
+        /******btnAddCategoryPhoto Event Handlers******/
+        //Move to activity to take photo and use shared preference to transfer photo to this activity
+
         //Still need to convert ImageView to Image
         lifecycleScope.launch {
 
             try
             {
-                var date = Date().time.toString()
-                var path: String =  applicationContext.filesDir.path
-                var fout: OutputStream
-
-                //Category name is the name of the category name associated with the image
-                var newFile: File = File(path,"CategoryName")
-                if (!newFile.exists()) {
-                    newFile.mkdirs();
-                }
-
-                var newFile2: File = File(newFile, "$date.png");
-                fout = FileOutputStream(newFile2);
-
-                //add your bitmap
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, fout)
-                fout.flush()
-                fout.close()
 
             }
             catch (e : Exception)
@@ -151,14 +135,8 @@ class CreateCategoryActivity : AppCompatActivity() {
             }
 
         }
+        //var newCategoryImage : File = (Environment.getExternalStorageDirectory(), "/Android/data/"; getApplicationContext().getPackageName(); "/Files"
 
-        //var newCategoryImage : File = (Environment.getExternalStorageDirectory(),
-        //                                    "/Android/data/",
-        //                                    getApplicationContext().getPackageName(),
-        //                                    "/Files")
-
-        /******btnAddCategoryPhoto Event Handlers******/
-        //Move to activity to take photo and use shared preference to transfer photo to this activity
 
 
         /******btnCreateCategory Event Handlers******/
@@ -179,8 +157,31 @@ class CreateCategoryActivity : AppCompatActivity() {
 
         }
 
+    }
 
+    /******Check for permissions to access gallery******/
+    private fun AccessGallery()
+    {
+        val PERMISSION_CODE_READ = 1
+        val PERMISSION_CODE_WRITE = 2
+        val IMAGE_PICK_CODE = 3 // GIVEN INTEGER VALUE FOR IMAGE_PICK_CODE
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if ((checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
+                && (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
+            ) {
+                val permission = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+                val permissionCoarse = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE)
 
+                requestPermissions(permission, PERMISSION_CODE_READ) // GIVE AN INTEGER VALUE FOR PERMISSION_CODE_READ LIKE 1001
+                requestPermissions(permissionCoarse, PERMISSION_CODE_WRITE) // GIVE AN INTEGER VALUE FOR PERMISSION_CODE_WRITE LIKE 1002
+            }
+            else
+            {
+                val intent = Intent(Intent.ACTION_PICK)
+                intent.type = "image/*"
+                startActivityForResult(intent, IMAGE_PICK_CODE)
+            }
+        }
     }
 }

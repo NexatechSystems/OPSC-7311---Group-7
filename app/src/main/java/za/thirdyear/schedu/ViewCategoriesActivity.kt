@@ -55,8 +55,6 @@ class ViewCategoriesActivity : AppCompatActivity() {
                     true
                 }
 
-
-
                 else -> false
             }
         }
