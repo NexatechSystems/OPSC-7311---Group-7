@@ -30,7 +30,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.212"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/man_standing_with_arms_crossed" />
 
     <TextView
         android:id="@+id/txtSelectProjectCategory"
@@ -38,7 +39,7 @@
         android:layout_height="66dp"
         android:layout_marginTop="160dp"
         android:layout_marginEnd="132dp"
-        android:text="Select a Category"
+        android:text="@string/select_a_category"
         android:textColor="#FFFFFF"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
