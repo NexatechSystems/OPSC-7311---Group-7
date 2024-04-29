@@ -49,11 +49,7 @@ class CreateProjects : AppCompatActivity() {
                     startActivity(moveIntent)
                     true
                 }
-                R.id.nav_create_categories->{
-                    val moveIntent = Intent(this, CreateCategoryActivity::class.java)
-                    startActivity(moveIntent)
-                    true
-                }
+
 
 
 
