@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 
 
 class LoginActivity : AppCompatActivity() {
@@ -23,17 +25,23 @@ class LoginActivity : AppCompatActivity() {
 
         // Initialize SharedPreferences
         sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE)
+        FirebaseApp.initializeApp(this) //Initialise Firebase App in application
 
         // Initialize views
         btnRegister = findViewById(R.id.btnRegisterRedirect)
         btnLogin = findViewById(R.id.btnLogin)
         txtEmailAddress = findViewById(R.id.txtEmailAddress)
+        var email = txtEmailAddress.text.toString()
         txtPassword = findViewById(R.id.txtPassword)
+        var password = txtPassword.text.toString()
+        /******Declare variables*****/
+        var loginAuth : FirebaseAuth = FirebaseAuth.getInstance()
 
         // Redirect to Register Page
         btnRegister.setOnClickListener {
             val registerPage = Intent(this, RegistrationActivity::class.java)
             startActivity(registerPage)
+
         }
 
         // Authenticate User

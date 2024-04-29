@@ -1,13 +1,22 @@
 package za.thirdyear.schedu
 
-class User {
-    private var userID : String = "User000000"
-    private var userName : String = "User Default Name"
-    private var userSurname : String = "User Default Surname"
-    private var userEmail : String = "User Default Email"
-    private var userUserName : String = "User Default Username"
-    private var userPassword : String = "User Default Password"
+import android.util.Log
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
+class User {
+    var userID : String
+    var userName : String
+    var userSurname : String
+    var userEmail : String
+    var userUserName : String
+    var userPassword : String
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var firebaseDatabase: FirebaseDatabase
+
+
+    //Constructor
     constructor(ID : String, Name : String, Surname : String, Email : String, Username : String, Password : String)
     {
         this.userID = ID
@@ -18,25 +27,40 @@ class User {
         this.userPassword = Password
     }
 
-    /******Create- Insert data to add Details to Firebase for Registration******/
-    public fun RegisterUser(NewUser : User) : Boolean
-    {
-        var registered : Boolean = false
-            //Enter newUser into Firebase
 
+    /******Create- Insert data to add Details to Firebase for Registration******/
+    fun RegisterUser(NewUser: User): Boolean {
+        var registered: Boolean = false
+
+        //Enter newUser into Firebase (as Dictionary)
+        firebaseAuth.createUserWithEmailAndPassword(NewUser.userName, NewUser.userPassword)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+
+                    // User registered successfully
+                    val user = firebaseAuth.currentUser
+                    user?.let {
+                        // Get the user ID
+                        val userID = user.uid
+
+                        // Save additional user information to the Realtime Database
+                        val userReference = firebaseDatabase.reference.child(NewUser.userID)
+                        userReference.child(NewUser.userID).setValue(NewUser)
+                            .addOnSuccessListener { registered = true }
+                            .addOnFailureListener { registered = false } // User registration failed
+                    }
+                }
+
+                // User registration unsuccessful
+                else {
+
+                    registered = false
+                }
+            }
+
+        //Return true of registration is successful or false if registration failed
         return registered
     }
-
-
-    /******Retrieve username and password from database******/
-    public fun LoginUser (Username: String, Password : String) : Boolean
-    {
-        var loggedIn = false
-        //Search Firebase for username and password
-
-        return loggedIn
-    }
-
 
     /******Update User Details:******/
     public fun UpdateUserDetails (newData : String, Column : String) : Boolean
@@ -46,16 +70,37 @@ class User {
         return updated
     }
 
-
-
-
-
     /******Delete User Details:******/
     public fun DeleteUserDetails (newData : String, Column : String) : Boolean
     {
         var deleted = false
 
         return deleted
+    }
+
+    companion object{
+        lateinit var firebaseAuth : FirebaseAuth //Declared Firebase Authorisation
+        /******Retrieve username and password from database******/
+        fun LoginUser(email : String, password : String) : Boolean
+        {
+            var login : Boolean = false
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener{ task ->
+                    if (task.isSuccessful)
+                    {
+                        //Successful Login
+                        login = true
+                    }
+
+                    else
+                    {
+                        //Unsuccessful Login
+                        login = false
+                    }
+                }
+            return login
+        }
+
     }
 
 

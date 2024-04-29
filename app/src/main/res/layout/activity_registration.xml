@@ -161,12 +161,13 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="536dp"
         android:height="52dp"
-        android:drawableLeft="@drawable/password_lock"
-        android:hint="Password"
+        android:drawableStart="@drawable/password_lock"
+        android:hint="@string/password"
         android:textColorHint="#07A2B7"
         android:textColor="#07A2B7"
         android:inputType="textPassword"
         android:textSize="20sp"
+        android:inputType="textVisiblePassword"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

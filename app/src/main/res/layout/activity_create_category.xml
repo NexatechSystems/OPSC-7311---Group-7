@@ -47,7 +47,7 @@
         android:id="@+id/btnAddCategoryPhoto"
         android:layout_width="206dp"
         android:layout_height="64dp"
-        android:layout_marginStart="88dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="344dp"
         android:drawableEnd="@drawable/icon_gallery"
         android:text="@string/add_category_photo"
