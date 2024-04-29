@@ -21,5 +21,7 @@
     <string name="don_t_have_an_account_register">Don\'t have an account? Register.</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Closed</string>
+    <string name="select_a_category">Select a Category</string>
+    <string name="man_standing_with_arms_crossed">man standing with arms crossed</string>
 
 </resources>

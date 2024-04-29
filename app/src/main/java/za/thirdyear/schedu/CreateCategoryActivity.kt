@@ -67,12 +67,12 @@ class CreateCategoryActivity : AppCompatActivity() {
         toggle.syncState()
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.nav_create_categories -> {
-                    val moveIntent = Intent(this, CreateCategoryActivity::class.java)
+                R.id.nav_home->{
+                    val moveIntent = Intent(this, MainActivity::class.java)
                     startActivity(moveIntent)
                     true
                 }
-                R.id.nav_view_categories -> {
+                R.id.nav_view_categories ->{
                     val moveIntent = Intent(this, ViewCategoriesActivity::class.java)
                     startActivity(moveIntent)
                     true
@@ -87,6 +87,7 @@ class CreateCategoryActivity : AppCompatActivity() {
                     startActivity(moveIntent)
                     true
                 }
+
 
 
 
