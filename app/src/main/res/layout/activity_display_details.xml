@@ -4,23 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_background_black"
     tools:context=".DisplayDetails"
-    tools:menu="@menu/scedu_menu"
 
-    android:background="@color/app_background_black">
+    tools:menu="@menu/scedu_menu">
 
     <com.google.android.material.navigation.NavigationView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:id="@+id/navigationView2"
+        android:layout_width="408dp"
+        android:layout_height="657dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <include layout="@layout/activity_base"/>
+    </com.google.android.material.navigation.NavigationView>
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/activity_base" />
 
     <TextView
         android:id="@+id/textViewCategory"
         android:layout_width="238dp"
         android:layout_height="35dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="132dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="160dp"
         android:contentDescription="Information Button"
         android:gravity="center"
         android:text="IT"
@@ -30,16 +37,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/imageViewInfoIcon"
         android:layout_width="45dp"
         android:layout_height="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="208dp"
         android:contentDescription="View Information Button"
         android:src="@drawable/informationicon1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/ltvProjects"
+        android:layout_width="386dp"
+        android:layout_height="252dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="148dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonFilter"
@@ -68,18 +84,22 @@
         android:text="Calculate Hours"
         android:textAllCaps="false"
         android:textColor="#000000"
-        android:textSize="11sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_default="wrap"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.875"
         app:layout_constraintWidth_default="wrap" />
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="410dp"
+        android:layout_height="660dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/navigationView2"
         tools:context=".MainActivity">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,9 +109,10 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/app_background_black"                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                />
+                android:background="@color/app_background_black"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
         </LinearLayout>
 
 

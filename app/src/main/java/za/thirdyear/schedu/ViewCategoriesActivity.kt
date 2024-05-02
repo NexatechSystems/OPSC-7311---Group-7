@@ -11,6 +11,7 @@ import android.widget.ListAdapter
 import android.widget.ListView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import layout.Category
@@ -20,13 +21,12 @@ class ViewCategoriesActivity : AppCompatActivity() {
     private lateinit var navigationView: NavigationView
     private lateinit var toolbar: Toolbar
     private lateinit var btnCreateCategory : Button
-    private lateinit var btnReloadCategories : Button
     private lateinit var listViewCategories : ListView
 
     //Use to filter projects by category name
     companion object
     {
-        public lateinit var selectedCategoryName : String
+        public var selectedCategoryName : String = ""
         val categoryNameList = mutableListOf<String>() //Create String List
     }
 
@@ -37,9 +37,35 @@ class ViewCategoriesActivity : AppCompatActivity() {
         /******Hooks******/
         btnCreateCategory = findViewById(R.id.btnCreateCategory)
         listViewCategories = findViewById(R.id.ltvCategories)
+        //Colors alternate ListView Elements Colour
+        val teal = ContextCompat.getColor(this, R.color.teal_200)
+        val orange = ContextCompat.getColor(this, R.color.orange)
+        val pink = ContextCompat.getColor(this, R.color.pink)
+        val purple = ContextCompat.getColor(this, R.color.purple_200)
+        val white = ContextCompat.getColor(this, R.color.white)
+        for( i in 0 until listViewCategories.childCount)
+        {
+            val listItem = listViewCategories.getChildAt(i)
+            if( i % 2 == 0)
+            {
+                listItem.setBackgroundColor(white)
+            }
+            else if(i % 3 == 0)
+            {
+                listItem.setBackgroundColor(teal)
+            }
+            else if(i % 5 == 0)
+            {
+                listItem.setBackgroundColor(orange)
+            }
+            else
+            {
+                listItem.setBackgroundColor(purple)
+            }
+
+        }
 
         /******Load Categories onto ListView******/
-
         for(array in Category.categoryList) //List to reassign values of List into String List
         {
             val stringArray = array as Array<String>
@@ -56,6 +82,8 @@ class ViewCategoriesActivity : AppCompatActivity() {
             val displayDetails : Intent = Intent(this, DisplayDetails::class.java)
             startActivity(displayDetails)
         }
+
+
 
         //Create Category
         btnCreateCategory.setOnClickListener()

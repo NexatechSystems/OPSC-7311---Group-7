@@ -19,6 +19,8 @@
 
     <!-- TextButton 4 -->
 
+
+
     <ImageView
         android:id="@+id/image_man_standing"
         android:layout_width="53dp"
@@ -56,6 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 
+
     <ListView
         android:id="@+id/ltvCategories"
         android:layout_width="407dp"
@@ -65,6 +68,8 @@
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"

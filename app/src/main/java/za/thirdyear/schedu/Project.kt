@@ -30,7 +30,7 @@ class Project {
 
     companion object
     {
-        public lateinit var projects: ArrayList<String> // ArrayLists to store projects (made public to make it accessible to whole project)
+        public var projects: ArrayList<String> = ArrayList<String>()// ArrayLists to store projects (made public to make it accessible to whole project)
 
     }
 
