@@ -38,6 +38,16 @@ class DisplayDetails : AppCompatActivity() {
         imgInfoButton = findViewById(R.id.imageViewInfoIcon)
         btnCalculate = findViewById(R.id.buttonCalculateHours)
         btnFilter = findViewById(R.id.buttonFilter)
+        var categoryName : String = ViewCategoriesActivity.selectedCategoryName
+        var totalDurationInCategory : Double
+        //Add sum of total Hours spent and Duration of Projects in category
+
+        //Code to display Project Details in a table
+        //Note- Project Array is defined as Project.projects and use this when filtering
+
+        //if(categoryName == null || categoryName == "")
+        //{Display all of the projects}
+
 
         drawerLayout = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.navigationView)

@@ -40,10 +40,10 @@
             android:name=".RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateProjectsActivity"
+            android:name=".CreateProjects"
             android:exported="false" />
         <activity
-            android:name=".DisplayDetailsActivity"
+            android:name=".DisplayDetails"
             android:exported="false" />
         <activity
             android:name=".BaseActivity"

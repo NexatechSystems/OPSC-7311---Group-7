@@ -20,6 +20,8 @@ class Category
     private lateinit var categoryImage : ImageView
 
 
+
+
     //Constructor for Class
     @RequiresApi(Build.VERSION_CODES.O)
     constructor(categoryID: String, userIU: String, categoryName: String, Image: ImageView)
@@ -29,6 +31,10 @@ class Category
         this.categoryName = categoryName
         this.categoryImage = Image
     }
+
+
+
+
 
 
 
@@ -44,6 +50,14 @@ class Category
     /******Companion Object for Static Methods******/
     companion object StaticMethods
     {
+        private var categoryArray : Array<Array<String>> = arrayOf(
+            arrayOf("CATWORK", "Work"),
+            arrayOf("CATPERSONAL", "Personal"),
+            arrayOf("CATSCHOOL", "School"))
+
+        public var categoryList : MutableList<Array<String>> =
+            mutableListOf<Array<String>>(arrayOf("CATWORK", "Work"), arrayOf("CATPERSONAL", "Personal"), arrayOf("CATSCHOOL", "School"))
+
         public lateinit var category : Category
         /******static Retrieve Categories List with UserID as parameter:- List available as a public attribute******/
         public lateinit var Categories : List<Category>
@@ -85,10 +99,4 @@ class Category
 
 
     }
-
-
-
-
-
-
 }

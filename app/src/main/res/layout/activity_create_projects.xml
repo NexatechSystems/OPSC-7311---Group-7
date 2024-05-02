@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_background_black"
-    tools:context=".CreateProjectsActivity">
+    tools:context=".CreateProjects">
 
     <TextView
         android:id="@+id/txtSelectCategory"
@@ -36,10 +36,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:layout_width="378dp"
-        android:layout_height="323dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="112dp"
+        android:layout_width="381dp"
+        android:layout_height="234dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="164dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -103,8 +103,7 @@
                 android:background="#d9d9d9"
                 android:drawableEnd="@drawable/icon_calendar"
                 android:hint="@string/start_date"
-                android:inputType="date"
-                />
+                android:inputType="date" />
 
             <TextView
                 android:id="@+id/textEndDate"
@@ -124,8 +123,7 @@
                 android:background="#d9d9d9"
                 android:drawableEnd="@drawable/icon_calendar"
                 android:hint="@string/end_date"
-                android:inputType="date"
-                />
+                android:inputType="date" />
 
             <TextView
                 android:id="@+id/textHoursRequired"
@@ -156,11 +154,11 @@
     </ScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnCreateCategory"
+        android:id="@+id/btnCreateProject"
         android:layout_width="114dp"
         android:layout_height="57dp"
-        android:layout_marginStart="280dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginStart="284dp"
+        android:layout_marginBottom="416dp"
         android:text="Create"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -170,19 +168,23 @@
         android:id="@+id/btnAddProjectPhoto"
         android:layout_width="206dp"
         android:layout_height="64dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="184dp"
         android:drawableEnd="@drawable/icon_gallery"
         android:text="Add Project Photo"
         android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="412dp"
+        android:layout_height="665dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:context=".MainActivity">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -192,9 +194,9 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/app_background_black"                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                />
+                android:background="@color/app_background_black"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
         </LinearLayout>
 
 

@@ -1,6 +1,6 @@
 package za.thirdyear.schedu
 
-interface IData
+data class IData(val categoryId: String, val categoryName: String)
 {
 
 }

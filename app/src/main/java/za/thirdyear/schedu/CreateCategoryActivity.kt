@@ -3,38 +3,25 @@ package za.thirdyear.schedu
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.drawable.Drawable
 import android.media.Image
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Environment
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
-import androidx.compose.ui.graphics.ImageBitmap
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.*
 import com.google.firebase.ktx.Firebase
 import layout.Category
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.ComposeView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.io.File
-import java.io.FileOutputStream
-import java.io.OutputStream
-import java.net.Authenticator
-import java.text.SimpleDateFormat
-import java.util.Date
 import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
@@ -42,9 +29,13 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.compose.ui.graphics.painter.BitmapPainter
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+
+private var categoryArray : Array<Array<String>> = arrayOf(
+    arrayOf("CATWORK", "Work"),
+    arrayOf("CATPERSONAL", "Personal"),
+    arrayOf("CATSCHOOL", "School"))
+
 
 class CreateCategoryActivity : AppCompatActivity() {
     private lateinit var btnAddCategoryPhoto : Button
@@ -66,6 +57,7 @@ class CreateCategoryActivity : AppCompatActivity() {
     val IMAGE_PICK_CODE = 3 // GIVEN INTEGER VALUE FOR IMAGE_PICK_CODE
 
 
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -84,6 +76,7 @@ class CreateCategoryActivity : AppCompatActivity() {
         val currentUser = FirebaseAuth.getInstance().currentUser
         val database : FirebaseDatabase = FirebaseDatabase.getInstance()
         val id : String = ""
+
 
         drawerLayout = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.navigationView)
@@ -117,33 +110,11 @@ class CreateCategoryActivity : AppCompatActivity() {
                     true
                 }
 
-
-
-
-
-
                 else -> false
             }
         }
 
 
-
-
-
-//Check if user is still signed in
-        authenticator = Firebase.auth
-
-        if(currentUser == null) /**If User is signed out**/
-        {
-            //Redirect to Login Activity with intent
-            val intent : Intent = Intent(this, LoginActivity::class.java)
-        }
-        else
-        {
-            currentUserID?.let {
-                id -> val userReference: DatabaseReference = database.getReference("users").child(id)
-            }
-        }
 
         /******btnAddCategoryPhoto Event Handlers******/
         btnAddCategoryPhoto.setOnClickListener()
@@ -183,32 +154,24 @@ class CreateCategoryActivity : AppCompatActivity() {
         //Use Category Class to put category in other class
         btnCreateCategory.setOnClickListener()
         {
+            //Create Category ID
             var categoryID = "CAT ${txtCategoryName.text.toString()}"
 
-            //Create Category Object
-            var Category : Category
-            Category = Category(categoryID, id,  txtCategoryName.text.toString(), imgCategoryPhoto)
-            try
-                {
-                    var enterNewCategory : Boolean
-                    //Add Category to Firebase
-
-
-                }
-            catch (e : Exception)
-            {
-
-            }
+            //Add new category to List
+            Category.categoryList.add(arrayOf(categoryID, txtCategoryName.text.toString()))
+            val viewCategory : Intent = Intent(this, ViewCategoriesActivity::class.java)
+            startActivity(viewCategory)
 
         }
 
     }
 
-    //Need to set for image imported from gallery
+    //Need to set for image imported from gallery- For Part 3
+    @Deprecated("This method has been deprecated in favor of using the Activity Result API\n      which brings increased type safety via an {@link ActivityResultContract} and the prebuilt\n      contracts for common intents available in\n      {@link androidx.activity.result.contract.ActivityResultContracts}, provides hooks for\n      testing, and allow receiving results in separate, testable classes independent from your\n      activity. Use\n      {@link #registerForActivityResult(ActivityResultContract, ActivityResultCallback)}\n      with the appropriate {@link ActivityResultContract} and handling the result in the\n      {@link ActivityResultCallback#onActivityResult(Object) callback}.")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        var bitmap :Bitmap
+        val bitmap :Bitmap
         var canvas : Canvas
         //imgCategoryPhoto.draw(canvas)
         //Check if there is an image selected
@@ -218,16 +181,10 @@ class CreateCategoryActivity : AppCompatActivity() {
             if(imageUri != null)
             {
                 bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, imageUri)
-                if(bitmap != null)
-                {
-                    //Stores image into bitmap
-                    val imageVariable = bitmap
+                //Stores image into bitmap
+                val imageVariable = bitmap
 
-                }
-                else
-                {
-                    //if bitmap is null (Show Alert)
-                }
+
             }
 
         }
@@ -238,7 +195,7 @@ class CreateCategoryActivity : AppCompatActivity() {
         }
     }
 
-    /******Check for permissions to access gallery******/
+    /******Check for permissions to access gallery- For Part 3******/
     private fun AccessGallery() : Boolean
     {
         val PERMISSION_CODE_READ = 1 // GIVE AN INTEGER VALUE FOR PERMISSION_CODE_READ LIKE 1
@@ -267,7 +224,7 @@ class CreateCategoryActivity : AppCompatActivity() {
         return accessPermission
     }
 
-    /******Show Alert Message with String return Type******/
+    /******Show Alert Message with String return Type- For Part 3******/
     private fun showAlert(message: String) {
         val builder = AlertDialog.Builder(this)
         builder.setMessage(message)

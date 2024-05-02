@@ -28,6 +28,11 @@ class Project {
         hoursSpent = 0.0
     }
 
+    companion object
+    {
+        public lateinit var projects: ArrayList<String> // ArrayLists to store projects (made public to make it accessible to whole project)
+
+    }
 
     /******Create new Project:******/
 

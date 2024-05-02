@@ -54,13 +54,9 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.nav_create_project->{
                     val moveIntent = Intent(this, CreateProjects::class.java)
-
                     startActivity(moveIntent)
                     true
                 }
-
-
-
 
                 else -> false
             }
