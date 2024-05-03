@@ -44,6 +44,8 @@ class AddPhotoActivity : AppCompatActivity() {
             if (permissionGranted) {
                 // Open the camera interface
                 openCameraInterface()
+                val moveIntent = Intent(this, CreateProjects::class.java)
+                startActivity(moveIntent)
             }
         }
 
@@ -53,6 +55,8 @@ class AddPhotoActivity : AppCompatActivity() {
             if (permissionGranted) {
                 // Open the camera interface
                 chooseImageGallery()
+                val moveIntent = Intent(this, CreateProjects::class.java)
+                startActivity(moveIntent)
             }
         }
     }

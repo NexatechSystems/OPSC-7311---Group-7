@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import layout.Category
 
 class DisplayDetails : AppCompatActivity() {
 
@@ -62,55 +63,32 @@ class DisplayDetails : AppCompatActivity() {
 
         //Code to display Project Details in a table
         //Note- Project Array is defined as Project.projects and use this when filtering
-        if(Project.projects.isEmpty())
-        {
+        if (Project.projects.isEmpty()) {
             projectList.add("No projects entered") //Initialize array if there are no projects
         }
-        else
-        {
-
-            if(categoryName != null || categoryName != "") //Category Name from ViewCategories Page
-            {
-                for(project in Project.projects)
-                {
-                    if(project.categoryName == categoryName)
+        else {
+            if (categoryName != ""){
+                for (project in Project.projects) {
+                    if (categoryName.contains(categoryName, ignoreCase = true) == project.categoryName.contains(project.categoryName, ignoreCase = true))
                     {
                         totalDurationInCategory += project.hoursDuration
-                        projectList.add("Project Name: ${project.projectName}  Start Date: ${project.startDate.toString()}  End Date: ${project.endDate.toString()}  Duration: ${project.hoursDuration}") //Add projects stored in project class
-
+                        val projectString: String =
+                            "Project Name: ${project.projectName}  Start Date: ${project.startDate}  End Date: ${project.endDate}  Duration: ${project.hoursDuration}"
+                        projectList.add(projectString) // Add projects stored in project class
                     }
                 }
             }
 
-            else if (ProjectFilteringActivity.startDate != null && ProjectFilteringActivity.endDate != null) //User Specified Period from ProjectFiltering Pate
-            {
-                for(project in Project.projects)
-                {
-                    if(project.startDate == ProjectFilteringActivity.startDate && project.endDate == ProjectFilteringActivity.endDate)
-                    {
-                        totalDurationInCategory += project.hoursDuration
-                        var projectString : String = "Project Name: ${project.projectName}  Start Date: ${project.startDate.toString()}  End Date: ${project.endDate.toString()}  Duration: ${project.hoursDuration}"
-                        projectList.add(projectString) //Add projects stored in project class
-                    }
-
-
-                }
-            }
-
-            //Default
-            else
-            {
-                for(project in Project.projects)
-                {
+            else {
+                for (project in Project.projects) {
                     totalDurationInCategory += project.hoursDuration
-                    var projectString : String = "Project Name: ${project.projectName}  \nStart Date: ${project.startDate.toString()}  \nEnd Date: ${project.endDate.toString()}  \nDuration: ${project.hoursDuration}"
+                    var projectString: String =
+                        "Project Name: ${project.projectName}  Start Date: ${project.startDate}  End Date: ${project.endDate}  Duration: ${project.hoursDuration}"
                     projectList.add(projectString) //Add projects stored in project class
                 }
-
             }
 
         }
-
 
         textDuration.text = "Total Hours Spent: $totalDurationInCategory"
         listViewDisplayDetails.adapter = listViewAdapter as ListAdapter?
@@ -121,6 +99,18 @@ class DisplayDetails : AppCompatActivity() {
         {
             val moveIntent = Intent(this, ProjectFilteringActivity::class.java)
             startActivity(moveIntent)
+        }
+
+        btnRefresh.setOnClickListener()
+        {
+            for (project in Project.projects) {
+                totalDurationInCategory += project.hoursDuration
+                var projectString: String =
+                    "Project Name: ${project.projectName}  Start Date: ${project.startDate}  End Date: ${project.endDate}  Duration: ${project.hoursDuration}"
+                projectList.add(projectString) //Add projects stored in project class
+            }
+            textDuration.text = "Total Hours Spent: $totalDurationInCategory"
+            listViewDisplayDetails.adapter = listViewAdapter as ListAdapter?
         }
 
 

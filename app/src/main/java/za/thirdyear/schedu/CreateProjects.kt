@@ -132,7 +132,7 @@ class CreateProjects : AppCompatActivity() {
     private fun showAlert(message: String) {
         val builder = AlertDialog.Builder(this)
         builder.setMessage(message)
-        builder.setPositiveButton(R.string.ok_button_title, null)
+        builder.setPositiveButton(R.string.Okay, null)
 
         val dialog = builder.create()
         dialog.show()

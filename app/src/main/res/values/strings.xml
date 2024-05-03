@@ -32,6 +32,7 @@
     <string name="maximum_hours" >Maximum Hours</string>
     <string name="save">Save</string>
     <string name="set_maximum_and_minimum_hours">Set Maximum and Minimum Hours</string>
+    <string name="Okay">OKAY</string>
 
 
 </resources>

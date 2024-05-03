@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.ArrayMap
+import android.util.Log
 import android.widget.Adapter
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -38,6 +39,9 @@ class ViewCategoriesActivity : AppCompatActivity() {
         btnCreateCategory = findViewById(R.id.btnCreateCategory)
         listViewCategories = findViewById(R.id.ltvCategories)
         //Colors alternate ListView Elements Colour
+        val list = categoryNameList.toTypedArray() //Add Categories to Listview
+        val listViewAdapter : Adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, categoryNameList)
+
         val teal = ContextCompat.getColor(this, R.color.teal_200)
         val orange = ContextCompat.getColor(this, R.color.orange)
         val pink = ContextCompat.getColor(this, R.color.pink)
@@ -68,11 +72,13 @@ class ViewCategoriesActivity : AppCompatActivity() {
         /******Load Categories onto ListView******/
         for(array in Category.categoryList) //List to reassign values of List into String List
         {
-            val stringArray = array as Array<String>
-            categoryNameList.add(stringArray[1])
+            if(Category.categoryList.count() >= categoryNameList.count() && !categoryNameList.contains(array[1]))
+            {
+                val stringArray = array as Array<String>
+                categoryNameList.add(stringArray[1])
+            }
+
         }
-        val list = categoryNameList.toTypedArray() //Add Categories to Listview
-        val listViewAdapter : Adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, categoryNameList)
         listViewCategories.adapter = listViewAdapter as ListAdapter?
 
         //Allow users to click on element of ListView
