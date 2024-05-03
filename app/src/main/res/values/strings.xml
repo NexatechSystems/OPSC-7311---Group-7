@@ -26,6 +26,12 @@
 
     <string name="select_a_category">Select a Category</string>
     <string name="man_standing_with_arms_crossed">man standing with arms crossed</string>
+    <string name="minimum_daily_goal_hours" >Minimum Daily Goal Hours</string>
+    <string name="minimum_hours">Minimum Hours</string>
+    <string name="maximum_daily_goal_hours" >Maximum Daily Goal Hours</string>
+    <string name="maximum_hours" >Maximum Hours</string>
+    <string name="save">Save</string>
+    <string name="set_maximum_and_minimum_hours">Set Maximum and Minimum Hours</string>
 
 
 </resources>

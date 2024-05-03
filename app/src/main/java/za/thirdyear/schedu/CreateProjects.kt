@@ -1,16 +1,21 @@
 package za.thirdyear.schedu
 
 import android.content.Intent
+import android.icu.text.DateFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import layout.Category
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.Date
 
 class CreateProjects : AppCompatActivity() {
 
@@ -18,13 +23,11 @@ class CreateProjects : AppCompatActivity() {
     lateinit var txtStartDate : EditText
     lateinit var txtEndDate : EditText
     lateinit var txtHoursRequired : EditText
-    private lateinit var adapter: ArrayAdapter<String>
-
-
+    private lateinit var adapter: ArrayAdapter<Project>
 
 
     // ArrayAdapter for projects
-    lateinit var projectAdapter: ArrayAdapter<String>
+    lateinit var projectAdapter: ArrayAdapter<Project>
     lateinit var btnCreateProject: Button // Button to add projects
     lateinit var txtProjectName : EditText
     lateinit var btnAddProjectPhoto:Button
@@ -49,7 +52,8 @@ class CreateProjects : AppCompatActivity() {
         btnCreateProject=findViewById(R.id.btnCreateProject)
         btnAddProjectPhoto=findViewById(R.id.btnAddProjectPhoto)
         categories = ViewCategoriesActivity.categoryNameList //Mutable List of Categories from ViewCategories
-        Project.projects = ArrayList()
+
+
         val toggle = ActionBarDrawerToggle(
             this,
             drawerLayout,
@@ -81,10 +85,6 @@ class CreateProjects : AppCompatActivity() {
                     startActivity(moveIntent)
                     true
                 }
-
-
-
-
                 else -> false
             }
         }
@@ -95,20 +95,30 @@ class CreateProjects : AppCompatActivity() {
 
 // Add Project to the Project list when the button is clicked
         btnCreateProject.setOnClickListener {
-            val project = txtProjectName.text.toString()
-            val sDate = txtStartDate.text.toString()
-            val eDate = txtEndDate.text.toString()
-            val hours =txtHoursRequired.text.toString()
-            if (project.isNotEmpty() && !Project.projects.contains(project)) {
-                Project.projects.add(project)
-                Project.projects.add(sDate)
-                Project.projects.add(eDate)
-                Project.projects.add(hours)
-                projectAdapter.notifyDataSetChanged()
-                txtProjectName.text.clear()
-                txtStartDate.text.clear()
-                txtEndDate.text.clear()
-                txtHoursRequired.text.clear()
+            try {
+                val project = txtProjectName.text.toString()
+                val sDate = txtStartDate.text.toString()
+                val eDate = txtEndDate.text.toString()
+                val hours = txtHoursRequired.text.toString()
+                var startDate: Date = SimpleDateFormat("dd-MM-yyyy").parse(sDate)
+                var endDate: Date = SimpleDateFormat("dd-MM-yyyy").parse(eDate)
+                var projectObject: Project =
+                    Project("PRO$project", "CAT", project, startDate, endDate, hours.toDouble()) //Create Project Object
+                if (!Project.projects.contains(projectObject))
+                {
+                    Project.projects.add(projectObject) //Add project object
+                    txtProjectName.text.clear()
+                    txtStartDate.text.clear()
+                    txtEndDate.text.clear()
+                    txtHoursRequired.text.clear()
+                }
+                val moveIntent = Intent(this, DisplayDetails::class.java)
+                startActivity(moveIntent)
+            }
+
+            catch (e : Exception)
+            {
+                showAlert("Unable to save project")
             }
         }
         btnAddProjectPhoto.setOnClickListener {
@@ -116,5 +126,15 @@ class CreateProjects : AppCompatActivity() {
             startActivity(moveIntent)
             true
         }
+    }
+
+    /******Show Alert Message with String return Type- For Part 3******/
+    private fun showAlert(message: String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage(message)
+        builder.setPositiveButton(R.string.ok_button_title, null)
+
+        val dialog = builder.create()
+        dialog.show()
     }
 }

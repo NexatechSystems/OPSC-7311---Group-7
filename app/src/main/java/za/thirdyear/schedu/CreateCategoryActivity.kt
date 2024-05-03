@@ -191,6 +191,7 @@ class CreateCategoryActivity : AppCompatActivity() {
         else
         {
             //if Image URI is null (Show Alert)
+            showAlert("Unable to select Image")
             
         }
     }

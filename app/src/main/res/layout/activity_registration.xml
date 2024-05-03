@@ -8,18 +8,18 @@
     android:background="@color/app_background_black">
 
 
-        <!-- Box-2: Inner Background -->
+    <!-- Box-2: Inner Background -->
 
 
-            <!-- Text: Already have an account? Log In -->
+    <!-- Text: Already have an account? Log In -->
 
     <!-- OutlinedButton-1: Sign Up with Google -->
 
-            <!-- OutlinedButton-2: Sign Up with Facebook -->
+    <!-- OutlinedButton-2: Sign Up with Facebook -->
 
-            <!-- Button: LOGIN IN -->
+    <!-- Button: LOGIN IN -->
 
-            <!-- Image: Logo -->
+    <!-- Image: Logo -->
 
     <TextView
         android:id="@+id/btnRegisterRedirect"
@@ -37,9 +37,9 @@
 
     <!-- OutlinedTextField-1: Email address -->
 
-            <!-- Divider-1 -->
+    <!-- Divider-1 -->
 
-            <!-- Divider-2 -->
+    <!-- Divider-2 -->
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRegister"
@@ -117,7 +117,7 @@
 
     <!-- OutlinedTextField-2: Password -->
 
-            <!-- Image: Person Sitting Image -->
+    <!-- Image: Person Sitting Image -->
 
 
     <TextView

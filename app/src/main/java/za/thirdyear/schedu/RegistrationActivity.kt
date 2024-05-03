@@ -66,7 +66,7 @@ class RegistrationActivity : AppCompatActivity() {
                 // Save the data (you can implement your saving logic here)
                 saveUserData(name, surname, username, emailAddress, password)
                 newUser = User(newUserID, name, surname, username, emailAddress, password)
-                newUser.RegisterUser(newUser)
+                //newUser.RegisterUser(newUser)
 
                 // Retrieve saved user data from SharedPreferences
                 val savedEmail = sharedPreferences.getString("emailAddress", "")

@@ -39,7 +39,7 @@
         android:layout_width="381dp"
         android:layout_height="234dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="164dp"
+        android:layout_marginBottom="108dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -102,7 +102,7 @@
                 android:layout_gravity="left"
                 android:background="#d9d9d9"
                 android:drawableEnd="@drawable/icon_calendar"
-                android:hint="@string/start_date"
+                android:hint="dd-MM-yyyy"
                 android:inputType="date" />
 
             <TextView
@@ -122,7 +122,7 @@
                 android:layout_gravity="left"
                 android:background="#d9d9d9"
                 android:drawableEnd="@drawable/icon_calendar"
-                android:hint="@string/end_date"
+                android:hint="dd-MM-yyyy"
                 android:inputType="date" />
 
             <TextView
@@ -142,7 +142,7 @@
                 android:layout_gravity="center_horizontal"
                 android:background="#d9d9d9"
                 android:drawableEnd="@drawable/icon_clock"
-                android:hint="Start Time"
+                android:hint="HH:mm"
                 android:textSize="20sp" />
 
             <View
@@ -157,8 +157,8 @@
         android:id="@+id/btnCreateProject"
         android:layout_width="114dp"
         android:layout_height="57dp"
-        android:layout_marginStart="284dp"
-        android:layout_marginBottom="416dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginBottom="16dp"
         android:text="Create"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -179,8 +179,8 @@
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
-        android:layout_width="412dp"
-        android:layout_height="665dp"
+        android:layout_width="409dp"
+        android:layout_height="658dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".MainActivity">

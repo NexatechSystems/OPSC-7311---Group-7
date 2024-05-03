@@ -58,25 +58,24 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 
-
     <ListView
         android:id="@+id/ltvCategories"
-        android:layout_width="407dp"
-        android:layout_height="272dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="140dp"
+        android:layout_width="380dp"
+        android:layout_height="240dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="100dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-
-
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
-        android:layout_width="400dp"
-        android:layout_height="652dp"
+        android:layout_width="412dp"
+        android:layout_height="661dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.004"
         tools:context=".MainActivity">
 
         <LinearLayout
@@ -103,5 +102,17 @@
             app:menu="@menu/scedu_menu" />
 
     </androidx.drawerlayout.widget.DrawerLayout>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="310dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="356dp"
+        android:text="Select a Category to view Projects under the Category"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

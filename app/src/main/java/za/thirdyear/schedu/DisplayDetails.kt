@@ -1,8 +1,6 @@
 package za.thirdyear.schedu
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Adapter
 import android.widget.ArrayAdapter
@@ -13,6 +11,7 @@ import android.widget.ListAdapter
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
@@ -21,11 +20,13 @@ class DisplayDetails : AppCompatActivity() {
 
     /******Declare Control Variables- lateint var ******/
     private lateinit var imgLogo: ImageView
-    private lateinit var listViewDisplayDetails : ListView
+    private lateinit var listViewDisplayDetails: ListView
     private lateinit var txtCategory: TextView
+    private lateinit var textDuration: TextView
     private lateinit var imgInfoButton: ImageButton
     private lateinit var btnFilter: Button
     private lateinit var btnCalculate: Button
+    private lateinit var btnRefresh: Button
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView: NavigationView
     private lateinit var toolbar: Toolbar
@@ -40,42 +41,90 @@ class DisplayDetails : AppCompatActivity() {
         imgInfoButton = findViewById(R.id.imageViewInfoIcon)
         btnCalculate = findViewById(R.id.buttonCalculateHours)
         btnFilter = findViewById(R.id.buttonFilter)
+        textDuration = findViewById(R.id.textHoursDuration)
+        btnRefresh = findViewById(R.id.btnRefresh)
 
         /******Variable Declaration******/
-        var projectList : ArrayList<String> = ArrayList<String>()
-        val listViewAdapter : Adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, projectList)
+        var projectList: ArrayList<String> = ArrayList<String>()
+        val listViewAdapter: Adapter =
+            ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, projectList)
         listViewDisplayDetails = findViewById(R.id.ltvProjects)
-        var categoryName : String = ViewCategoriesActivity.selectedCategoryName
-        if(categoryName == "")
-        {
+        var categoryName: String = ViewCategoriesActivity.selectedCategoryName
+        var totalDurationInCategory: Double =
+            0.0//Add sum of total Hours spent and Duration of Projects in category
+
+        //Get name of Category to display in the title of Page
+        if (categoryName == "") {
             txtCategory.text = "Projects"
-        }
-        else
-        {
+        } else {
             txtCategory.text = categoryName
         }
-        var totalDurationInCategory : Double //Add sum of total Hours spent and Duration of Projects in category
 
         //Code to display Project Details in a table
         //Note- Project Array is defined as Project.projects and use this when filtering
-            if(Project.projects.isEmpty())
-            {
-                projectList.add("No projects entered") //Initialize array if there are no projects
-            }
-             else
+        if(Project.projects.isEmpty())
+        {
+            projectList.add("No projects entered") //Initialize array if there are no projects
+        }
+        else
+        {
+
+            if(categoryName != null || categoryName != "") //Category Name from ViewCategories Page
             {
                 for(project in Project.projects)
                 {
-                    //if(categoryName == null || categoryName == "")
-                    //{Display all of the projects}
-                    projectList.add(project) //Add projects stored in project class
+                    if(project.categoryName == categoryName)
+                    {
+                        totalDurationInCategory += project.hoursDuration
+                        projectList.add("Project Name: ${project.projectName}  Start Date: ${project.startDate.toString()}  End Date: ${project.endDate.toString()}  Duration: ${project.hoursDuration}") //Add projects stored in project class
+
+                    }
+                }
+            }
+
+            else if (ProjectFilteringActivity.startDate != null && ProjectFilteringActivity.endDate != null) //User Specified Period from ProjectFiltering Pate
+            {
+                for(project in Project.projects)
+                {
+                    if(project.startDate == ProjectFilteringActivity.startDate && project.endDate == ProjectFilteringActivity.endDate)
+                    {
+                        totalDurationInCategory += project.hoursDuration
+                        var projectString : String = "Project Name: ${project.projectName}  Start Date: ${project.startDate.toString()}  End Date: ${project.endDate.toString()}  Duration: ${project.hoursDuration}"
+                        projectList.add(projectString) //Add projects stored in project class
+                    }
+
 
                 }
             }
 
-        val list = projectList.toTypedArray() //Add Projects to Project List
+            //Default
+            else
+            {
+                for(project in Project.projects)
+                {
+                    totalDurationInCategory += project.hoursDuration
+                    var projectString : String = "Project Name: ${project.projectName}  \nStart Date: ${project.startDate.toString()}  \nEnd Date: ${project.endDate.toString()}  \nDuration: ${project.hoursDuration}"
+                    projectList.add(projectString) //Add projects stored in project class
+                }
+
+            }
+
+        }
+
+
+        textDuration.text = "Total Hours Spent: $totalDurationInCategory"
         listViewDisplayDetails.adapter = listViewAdapter as ListAdapter?
 
+
+        //Button to get to ProjectFilteringActivity
+        btnFilter.setOnClickListener()
+        {
+            val moveIntent = Intent(this, ProjectFilteringActivity::class.java)
+            startActivity(moveIntent)
+        }
+
+
+        //Menu, Drawer and Toolbar
         drawerLayout = findViewById(R.id.drawer_layout)
         navigationView = findViewById(R.id.navigationView)
         toolbar = findViewById(R.id.toolbar)
@@ -91,29 +140,34 @@ class DisplayDetails : AppCompatActivity() {
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
 
-                R.id.nav_view_categories ->{
+                R.id.nav_view_categories -> {
 
                     val moveIntent = Intent(this, ViewCategoriesActivity::class.java)
                     startActivity(moveIntent)
                     true
                 }
 
-                R.id.nav_display_details->{
+                R.id.nav_display_details -> {
 
                     val moveIntent = Intent(this, DisplayDetails::class.java)
                     startActivity(moveIntent)
                     true
                 }
 
-                R.id.nav_logout->{
+                R.id.nav_create_project -> {
 
-                    val moveIntent = Intent(this, LoginActivity::class.java)
+                    val moveIntent = Intent(this, CreateProjects::class.java)
                     startActivity(moveIntent)
                     true
                 }
 
 
+                R.id.nav_logout -> {
 
+                    val moveIntent = Intent(this, LoginActivity::class.java)
+                    startActivity(moveIntent)
+                    true
+                }
 
                 else -> false
             }
@@ -121,4 +175,6 @@ class DisplayDetails : AppCompatActivity() {
 
 
     }
+
+
 }

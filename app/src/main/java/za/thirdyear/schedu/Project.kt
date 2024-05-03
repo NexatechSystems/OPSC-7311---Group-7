@@ -3,24 +3,23 @@ package za.thirdyear.schedu
 import java.util.Date
 
 class Project {
-    private var projectID : String = "PRO0000001"
-    private var categoryID : String = "CAT000000"
-    private var userID : String = "User000000"
-    private var projectName : String = "Project Name"
-    private lateinit var startDate : Date
-    private lateinit var endDate : Date
-    private var hoursDuration : Double = 0.0
-    private var hoursSpent : Double = 0.0
+     lateinit var projectID : String
+     lateinit var categoryName : String
+     lateinit var userID : String
+     lateinit var projectName : String
+     lateinit var startDate : Date
+     lateinit var endDate : Date
+     var hoursDuration : Double
+     var hoursSpent : Double
     public lateinit var Project : Project
 
-    constructor(ID : String, CategoryID : String, UserID : String ,
+    constructor(ID : String, CategoryID : String ,
                 Name : String, StartDate : Date, EndDate : Date, HoursDuration : Double)
     {
         this.projectID = ID
         //Use selectable categories from list
-        this.categoryID = CategoryID
+        this.categoryName = CategoryID
         //Use Shared Preference from user details
-        this.userID = UserID
         this.projectName = Name
         this.startDate = StartDate
         this.endDate = EndDate
@@ -30,7 +29,7 @@ class Project {
 
     companion object
     {
-        public var projects: ArrayList<String> = ArrayList<String>()// ArrayLists to store projects (made public to make it accessible to whole project)
+        public var projects: ArrayList<Project> = ArrayList<Project>()// ArrayLists to store projects (made public to make it accessible to whole project)
 
     }
 
